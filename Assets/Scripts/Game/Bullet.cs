@@ -1,3 +1,4 @@
+using System;
 using TDS.Utillity;
 using UnityEngine;
 
@@ -16,6 +17,14 @@ namespace TDS.Game
         #endregion
 
         #region Unity lifecycle
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag(Tags.EnemyTag) || other.gameObject.CompareTag(Tags.PlayerModelTag))
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {
