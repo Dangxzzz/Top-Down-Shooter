@@ -115,12 +115,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7504092451029024517}
+  - component: {fileID: 4688480125324582710}
   - component: {fileID: 1113005611640098103}
   - component: {fileID: 4152088015585100421}
   - component: {fileID: 2998908618877282825}
   - component: {fileID: 6504705100435392525}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: BigHendEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,8 +141,23 @@ Transform:
   m_Children:
   - {fileID: 7716588135382968219}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4688480125324582710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6350870412440357823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91eca7197860a6545936b4413f1b78fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hp: 5
+  _isDead: 0
+  _animation: {fileID: 2998908618877282825}
 --- !u!114 &1113005611640098103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68094e5fba911a342bfd9da0d4ce8444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _playerTransform: {fileID: 0}
+  _enemy: {fileID: 4688480125324582710}
 --- !u!114 &4152088015585100421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +187,7 @@ MonoBehaviour:
   _fireSpeed: 3
   _enemyBulletPrefab: {fileID: 1954944737942566192, guid: 6d2682e7d616cb94d9af4446510ab24f, type: 3}
   _animation: {fileID: 2998908618877282825}
+  _enemy: {fileID: 4688480125324582710}
 --- !u!114 &2998908618877282825
 MonoBehaviour:
   m_ObjectHideFlags: 0
