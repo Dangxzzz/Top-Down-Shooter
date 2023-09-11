@@ -1,7 +1,8 @@
+using System;
 using TDS.Game.Animation;
 using UnityEngine;
 
-namespace TDS.Game.Player
+namespace TDS.Game.PlayerScripts
 {
     public class PalyerMovement : MonoBehaviour
     {
@@ -9,6 +10,8 @@ namespace TDS.Game.Player
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
+        [SerializeField] private Player _player;
+        
         
         [Header("Settings")]
         [SerializeField] private float _speed = 5f;
@@ -17,11 +20,14 @@ namespace TDS.Game.Player
         #endregion
 
         #region Unity lifecycle
-
+        
         private void Update()
         {
-            Rotate();
-            Move();
+            if (!_player.IsDead)
+            {
+                Rotate();
+                Move();
+            }
         }
 
         #endregion

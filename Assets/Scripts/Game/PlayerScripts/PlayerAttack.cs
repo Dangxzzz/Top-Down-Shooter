@@ -1,15 +1,16 @@
 using TDS.Game.Animation;
 using UnityEngine;
 
-namespace TDS.Game.Player
+namespace TDS.Game.PlayerScripts
 {
     public class PlayerAttack : MonoBehaviour
     {
         #region Variables
 
-        [Header("Settings")]
+        [Header("Configs")]
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _bulletSpawnPositionTransform;
+        [SerializeField] private Player _player;
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
 
@@ -19,9 +20,12 @@ namespace TDS.Game.Player
 
         private void Update()
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (!_player.IsDead)
             {
-                Fire();
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Fire();
+                }
             }
         }
 
