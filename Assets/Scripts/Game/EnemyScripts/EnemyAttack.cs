@@ -2,7 +2,7 @@ using System.Collections;
 using TDS.Game.Animation;
 using UnityEngine;
 
-namespace TDS.Game.Enemy
+namespace TDS.Game.EnemyScripts
 {
     public class EnemyAttack : MonoBehaviour
     {
@@ -12,6 +12,7 @@ namespace TDS.Game.Enemy
         [SerializeField] private float _fireSpeed;
         [SerializeField] private GameObject _enemyBulletPrefab;
         [SerializeField] private EnemyAnimation _animation;
+        [SerializeField] private Enemy _enemy;
 
         #endregion
 
@@ -33,11 +34,11 @@ namespace TDS.Game.Enemy
 
         private IEnumerator EnemyFire()
         {
-            while (true)
+            while (!_enemy.IsDead)
             {
                 _animation.PlayAttack();
                 CreateBullet();
-                yield return new WaitForSeconds(_fireSpeed); 
+                yield return new WaitForSeconds(_fireSpeed);
             }
         }
 

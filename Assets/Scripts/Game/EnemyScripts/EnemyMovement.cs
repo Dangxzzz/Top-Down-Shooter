@@ -1,23 +1,30 @@
 using UnityEngine;
 
-namespace TDS.Game.Enemy
+namespace TDS.Game.EnemyScripts
 {
     public class EnemyMovement : MonoBehaviour
     {
         #region Variables
 
-        [SerializeField] private Transform _player;
+        [SerializeField] private Transform _playerTransform;
+        [SerializeField] private Enemy _enemy;
 
         #endregion
 
         #region Unity lifecycle
 
-        private void Start() { }
+        private void Start()
+        {
+            
+        }
 
         private void Update()
         {
-            Transform playerPosition = _player.GetComponent<Transform>();
-            Rotate(playerPosition);
+            if (!_enemy.IsDead)
+            {
+                Transform playerPosition = _playerTransform.GetComponent<Transform>();
+                Rotate(playerPosition);
+            }
         }
 
         #endregion
