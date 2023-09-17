@@ -4,41 +4,72 @@ using UnityEngine;
 
 namespace TDS.Game.EnemyScripts
 {
-    public class EnemyAttack : MonoBehaviour
+    public abstract class EnemyAttack : EnemyComponents
     {
         #region Variables
 
-        [Header("Configs")]
-        [SerializeField] private float _fireSpeed;
-        [SerializeField] private GameObject _enemyBulletPrefab;
-        [SerializeField] private EnemyAnimation _animation;
-        [SerializeField] private Enemy _enemy;
+        [Header(nameof(EnemyAttack))]
+        [SerializeField] private float _attackDelay = 1f;
+
+        private IEnumerator _attackRoutine;
+        private WaitForSeconds _wait;
+        private bool _needStopAttack;
 
         #endregion
 
         #region Unity lifecycle
 
-        private void Start()
+        private void Awake()
         {
-            StartCoroutine(EnemyFire());
+            _wait = new WaitForSeconds(_attackDelay);
         }
+
+        private void OnDisable()
+        {
+            StopAttack();
+        }
+
+        #endregion
+
+        #region Public methods
+
+        public void StartAttack()
+        {
+            _attackRoutine = StartAttackInternal();
+            StartCoroutine(_attackRoutine);
+        }
+
+        public void NeedStopAttack(bool needStopAttack)
+        {
+            _needStopAttack = needStopAttack;
+        }
+
+        public void StopAttack()
+        {
+            if (_attackRoutine != null)
+            {
+                StopCoroutine(_attackRoutine);
+                _attackRoutine = null;
+            }
+        }
+
+        #endregion
+
+        #region Protected methods
+
+        protected virtual void OnPerformAttack() { }
 
         #endregion
 
         #region Private methods
 
-        private void CreateBullet()
+        private IEnumerator StartAttackInternal()
         {
-            Instantiate(_enemyBulletPrefab, transform.position, transform.rotation);
-        }
-
-        private IEnumerator EnemyFire()
-        {
-            while (!_enemy.IsDead)
+            yield return _wait;
+            while (!_needStopAttack)
             {
-                _animation.PlayAttack();
-                CreateBullet();
-                yield return new WaitForSeconds(_fireSpeed);
+                OnPerformAttack();
+                yield return _wait;
             }
         }
 
