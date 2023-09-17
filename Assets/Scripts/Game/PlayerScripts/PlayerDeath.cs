@@ -1,62 +1,54 @@
-using TDS.Game.Animation;
-using TDS.Utillity;
+using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace TDS.Game.PlayerScripts
 {
-    public class Player : MonoBehaviour
+    public class PlayerDeath : PlayerComponents
     {
         #region Variables
 
-        [Header("Configs")]
-        [SerializeField] private int _hp;
-        [SerializeField] private bool _isDead;
-        [SerializeField] private PlayerAnimation _animation;
-        [SerializeField] private float _restartTime;
-        [SerializeField] private int _maxHp;
+        [SerializeField] private UnitHp _hp;
+
+        #endregion
+
+        #region Events
+
+        public event Action OnHappened;
 
         #endregion
 
         #region Properties
 
-        public bool IsDead => _isDead;
+        public bool IsDead { get; private set; }
 
         #endregion
 
         #region Unity lifecycle
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnEnable()
         {
-            if (other.gameObject.CompareTag(Tags.EnemyBulletTag))
-            {
-                ChangeHp(-1);
-            }
-            else if (other.gameObject.CompareTag(Tags.MedChestTag))
-            {
-                ChangeHp(1);
-                Destroy(other.gameObject);
-            }
+            OnHpChanged(_hp.Current);
+            _hp.OnChanged += OnHpChanged;
+        }
+
+        private void OnDisable()
+        {
+            _hp.OnChanged -= OnHpChanged;
         }
 
         #endregion
 
         #region Private methods
 
-        private void ChangeHp(int health)
+        private void OnHpChanged(int currentHp)
         {
-            _hp += health;
-            if (_hp <= 0)
+            if (IsDead || currentHp > 0)
             {
-                _isDead = true;
-                _animation.PlayDeath();
-                this.StartTimer(_restartTime, () => RestartLevel());
+                return;
             }
-        }
 
-        private void RestartLevel()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            IsDead = true;
+            OnHappened?.Invoke();
         }
 
         #endregion
