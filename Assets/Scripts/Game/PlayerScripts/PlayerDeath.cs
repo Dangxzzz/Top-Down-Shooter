@@ -30,7 +30,6 @@ namespace TDS.Game.PlayerScripts
         {
             if (other.gameObject.CompareTag(Tags.EnemyBulletTag))
             {
-                Debug.Log("Collision");
                 ChangeHp(-1);
             }
             else if (other.gameObject.CompareTag(Tags.MedChestTag))
