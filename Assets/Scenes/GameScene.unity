@@ -230,6 +230,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _follow: {fileID: 2070207172}
   _z: -10
+--- !u!114 &1000347081 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5815633697361039683, guid: 64666da1dee86704da496f3b212e65b1, type: 3}
+  m_PrefabInstance: {fileID: 6281079573757462685}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04a5b55be644df438098f66baf80017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1000347085 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7504092451029024517, guid: 64666da1dee86704da496f3b212e65b1, type: 3}
+  m_PrefabInstance: {fileID: 6281079573757462685}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1895851124
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +327,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5618589693539968161, guid: 64666da1dee86704da496f3b212e65b1, type: 3}
+      propertyPath: _startPosition
+      value: 
+      objectReference: {fileID: 1000347085}
+    - target: {fileID: 5618589693539968161, guid: 64666da1dee86704da496f3b212e65b1, type: 3}
+      propertyPath: _directMovement
+      value: 
+      objectReference: {fileID: 1000347081}
+    - target: {fileID: 5618589693539968161, guid: 64666da1dee86704da496f3b212e65b1, type: 3}
+      propertyPath: _startPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618589693539968161, guid: 64666da1dee86704da496f3b212e65b1, type: 3}
+      propertyPath: _startPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6350870412440357823, guid: 64666da1dee86704da496f3b212e65b1, type: 3}
       propertyPath: m_Name
       value: BigHandEnemy
@@ -321,11 +353,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7504092451029024517, guid: 64666da1dee86704da496f3b212e65b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.94
+      value: 5.7
       objectReference: {fileID: 0}
     - target: {fileID: 7504092451029024517, guid: 64666da1dee86704da496f3b212e65b1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7504092451029024517, guid: 64666da1dee86704da496f3b212e65b1, type: 3}
       propertyPath: m_LocalPosition.z

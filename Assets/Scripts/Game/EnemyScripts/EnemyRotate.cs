@@ -10,9 +10,15 @@ namespace TDS.Game.EnemyScripts
 
         [SerializeField] private TriggerObserver _triggerObserver;
         private Transform _target;
+        private bool _needRotateToStart;
+        private Vector3 _startPoint;
 
         #endregion
-        
+
+        private void Awake()
+        {
+            _startPoint = transform.position;
+        }
 
         #region Unity lifecycle
 
@@ -22,7 +28,20 @@ namespace TDS.Game.EnemyScripts
             {
                 return;
             }
-            RotateToTarget(_target);
+            Rotate();
+        }
+
+        private void Rotate()
+        {
+            Debug.Log($"Start pos {_startPoint}  CurrentPos {transform.position}");
+            if (_needRotateToStart)
+            {
+                RotateToStartPoint();
+            }
+            else
+            {
+                RotateToTarget(_target);
+            }
         }
 
         private void OnEnable()
@@ -44,17 +63,28 @@ namespace TDS.Game.EnemyScripts
         private void OnObserverEnter(Collider2D other)
         {
             _target = other.transform;
+            _needRotateToStart = false;
         }
 
         private void OnObserverExit(Collider2D other)
         {
-            _target = null;
+            _needRotateToStart = true;
         }
 
         private void RotateToTarget(Transform target)
         {
             Vector3 direction = transform.position - target.position;
             transform.up = direction;
+        }
+
+        private void RotateToStartPoint()
+        {
+            Debug.Log($"Rotate to start");
+            if (transform.position!= _startPoint) 
+            {
+                Vector3 direction = transform.position-_startPoint;
+                transform.up = direction;
+            }
         }
 
         #endregion

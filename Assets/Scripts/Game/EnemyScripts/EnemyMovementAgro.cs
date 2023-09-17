@@ -1,3 +1,4 @@
+using System;
 using TDS.Utillity;
 using UnityEngine;
 
@@ -9,10 +10,19 @@ namespace TDS.Game.EnemyScripts
 
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private EnemyMovement _enemyMovement;
+        [SerializeField] private EnemyDirectMovement _directMovement;
+        
+     private Vector3 _startPosition;
 
         #endregion
 
         #region Unity lifecycle
+
+        private void Awake()
+        {
+            Debug.Log(_startPosition);
+            _startPosition = transform.position;
+        }
 
         private void OnEnable()
         {
@@ -32,12 +42,15 @@ namespace TDS.Game.EnemyScripts
 
         private void OnObserverEnter(Collider2D other)
         {
+            _directMovement.NeedToStart=false;
             SetTarget(other.transform);
         }
 
         private void OnObserverExit(Collider2D other)
         {
-            SetTarget(null);
+            Debug.Log("MoveBack");
+            _directMovement.NeedToStart=true;
+            // SetTarget(null);
         }
 
         private void SetTarget(Transform otherTransform)
@@ -47,6 +60,7 @@ namespace TDS.Game.EnemyScripts
                 _enemyMovement.SetTarget(otherTransform);
             }
         }
+        
 
         #endregion
     }
