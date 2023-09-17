@@ -20,9 +20,9 @@ TagManager:
   - PlayerBullet
   - Player
   - Enemy
-  - 
-  - 
-  - 
+  - EnemyAttackAgro
+  - EnemyMovementAgro
+  - Items
   - 
   - 
   - 
