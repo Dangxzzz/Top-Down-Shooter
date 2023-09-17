@@ -33,7 +33,6 @@ namespace TDS.Game.EnemyScripts
 
         private void Rotate()
         {
-            Debug.Log($"Start pos {_startPoint}  CurrentPos {transform.position}");
             if (_needRotateToStart)
             {
                 RotateToStartPoint();

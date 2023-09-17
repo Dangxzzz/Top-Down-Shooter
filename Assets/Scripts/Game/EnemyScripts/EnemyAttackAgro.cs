@@ -1,5 +1,6 @@
 using TDS.Utillity;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TDS.Game.EnemyScripts
 {
@@ -7,8 +8,10 @@ namespace TDS.Game.EnemyScripts
     {
         #region Variables
 
-        [SerializeField] private TriggerObserver _triggerObserver;
-        [SerializeField] private EnemyAttack _attack;
+        [SerializeField] private TriggerObserver _triggerObserverRangeAttack;
+        [SerializeField] private TriggerObserver _triggerObserverShortAttack;
+        [SerializeField] private EnemyAttack _attackRange;
+        [SerializeField] private EnemyAttack _attackShort;
         [SerializeField] private EnemyMovement _movement;
         
 
@@ -18,23 +21,27 @@ namespace TDS.Game.EnemyScripts
 
         private void OnEnable()
         {
-            _triggerObserver.OnEnter += OnObserverEnter;
-            _triggerObserver.OnExit += OnObserverExit;
+            _triggerObserverShortAttack.OnEnter += ObserverShortAttackEnter;
+            _triggerObserverShortAttack.OnExit += ObserverShortAttackExit;
+            _triggerObserverRangeAttack.OnEnter += ObserverRangeAttackEnter;
+            _triggerObserverRangeAttack.OnExit += ObserverRangeAttackExit;
         }
 
         private void OnDisable()
         {
-            _triggerObserver.OnEnter -= OnObserverEnter;
-            _triggerObserver.OnExit -= OnObserverExit;
+            _triggerObserverShortAttack.OnEnter -= ObserverShortAttackEnter;
+            _triggerObserverShortAttack.OnExit -= ObserverShortAttackExit;
+            _triggerObserverRangeAttack.OnEnter -= ObserverRangeAttackEnter;
+            _triggerObserverRangeAttack.OnExit -= ObserverRangeAttackExit;
         }
 
         #endregion
 
         #region Private methods
 
-        private void OnObserverEnter(Collider2D other)
+        private void ObserverRangeAttackEnter(Collider2D other)
         {
-            SetActiveAttack(true);
+            SetActiveAttack(true,_attackRange);
 
             if (_movement != null)
             {
@@ -42,30 +49,50 @@ namespace TDS.Game.EnemyScripts
             }
         }
 
-        private void OnObserverExit(Collider2D other)
+        private void ObserverShortAttackEnter(Collider2D other)
         {
-            SetActiveAttack(false);
+            SetActiveAttack(true,_attackShort);
+
+            if (_attackRange != null)
+            {
+                _attackRange.Deactivate();
+            }
+        }
+
+        private void ObserverRangeAttackExit(Collider2D other)
+        {
+            SetActiveAttack(false,_attackRange);
             
             if (_movement != null)
             {
                 _movement.Activate();
             }
         }
-
-        private void SetActiveAttack(bool needAttack)
+        
+        private void ObserverShortAttackExit(Collider2D other)
         {
-            if (_attack == null)
+            SetActiveAttack(false,_attackShort);
+            
+            if (_attackRange != null)
+            {
+                _attackRange.Activate();
+            }
+        }
+
+        private void SetActiveAttack(bool needAttack,EnemyAttack attack)
+        {
+            if (attack == null)
             {
                 return;
             }
 
             if (needAttack)
             {
-                _attack.StartAttack();
+                attack.StartAttack();
             }
             else
             {
-                _attack.StopAttack();
+                attack.StopAttack();
             }
         }
 

@@ -48,9 +48,7 @@ namespace TDS.Game.EnemyScripts
 
         private void OnObserverExit(Collider2D other)
         {
-            Debug.Log("MoveBack");
             _directMovement.NeedToStart=true;
-            // SetTarget(null);
         }
 
         private void SetTarget(Transform otherTransform)

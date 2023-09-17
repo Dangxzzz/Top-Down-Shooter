@@ -9,9 +9,7 @@ namespace TDS.Game
 
         [SerializeField] private int _initialHp = 3;
         [SerializeField] private int _maxHp = 3;
-
-        private int _current=3;
-
+        
         #endregion
 
         #region Events

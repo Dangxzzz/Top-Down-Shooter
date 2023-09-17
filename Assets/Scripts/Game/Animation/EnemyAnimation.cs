@@ -8,6 +8,7 @@ namespace TDS.Game.Animation
 
         [SerializeField] private Animator _animator;
 
+        private static readonly int ShortAttack = Animator.StringToHash("ShortAttack");
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Dead = Animator.StringToHash("Death");
 
@@ -23,6 +24,11 @@ namespace TDS.Game.Animation
         public void PlayDeath()
         {
             _animator.SetTrigger(Dead);
+        }
+
+        public void PlayShortAttack()
+        {
+            _animator.SetTrigger(ShortAttack);
         }
 
         #endregion
