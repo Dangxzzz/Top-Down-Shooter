@@ -22,8 +22,7 @@ namespace TDS.Game.EnemyScripts
         {
             if (!_enemy.IsDead)
             {
-                Transform playerPosition = _playerTransform.GetComponent<Transform>();
-                Rotate(playerPosition);
+                Rotate(_playerTransform);
             }
         }
 
