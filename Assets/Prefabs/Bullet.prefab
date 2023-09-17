@@ -50,6 +50,7 @@ MonoBehaviour:
   _rb: {fileID: 6701675001867909798}
   _speed: 30
   _lifeTime: 1.5
+  _damage: 1
 --- !u!50 &6701675001867909798
 Rigidbody2D:
   serializedVersion: 4
