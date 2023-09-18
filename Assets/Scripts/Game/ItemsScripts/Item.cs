@@ -8,15 +8,17 @@ namespace TDS.Game.ItemsScripts
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            OnPerformAction();
-            Destroy(gameObject);
+            OnPerformAction(other);
         }
 
         #endregion
 
         #region Protected methods
 
-        protected abstract void OnPerformAction();
+        protected virtual void OnPerformAction(Collider2D other)
+        {
+            Destroy(gameObject);
+        }
 
         #endregion
     }
