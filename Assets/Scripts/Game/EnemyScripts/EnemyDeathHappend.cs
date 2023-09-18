@@ -10,6 +10,7 @@ namespace TDS.Game.EnemyScripts
         [SerializeField] private EnemyComponents[] _enemyComponents;
         [SerializeField] private EnemyAnimation _animation;
         [SerializeField] private EnemyAttack _attack;
+        [SerializeField] private EnemyAttack _shortAttack;
         [SerializeField] private EnemyDeath _enemyDeath;
 
         #endregion
@@ -32,10 +33,13 @@ namespace TDS.Game.EnemyScripts
 
         private void OnDead()
         {
+            Debug.Log($"Death Happened");
             _attack.NeedStopAttack(true);
+            _shortAttack.NeedStopAttack(true);
             _animation.PlayDeath();
             foreach (EnemyComponents component in _enemyComponents)
             {
+                Debug.Log($"Diactivate {component}");
                 component.Deactivate();
             }
         }

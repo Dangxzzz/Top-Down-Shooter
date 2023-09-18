@@ -51,6 +51,7 @@ namespace TDS.Game.EnemyScripts
 
         private void ObserverShortAttackEnter(Collider2D other)
         {
+            Debug.Log("Attack Collision");
             SetActiveAttack(true,_attackShort);
 
             if (_attackRange != null)

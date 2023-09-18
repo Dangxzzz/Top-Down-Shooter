@@ -20,7 +20,6 @@ namespace TDS.Game.EnemyScripts
 
         private void Awake()
         {
-            Debug.Log(_startPosition);
             _startPosition = transform.position;
         }
 
@@ -42,7 +41,9 @@ namespace TDS.Game.EnemyScripts
 
         private void OnObserverEnter(Collider2D other)
         {
+            Debug.Log("Go to player");
             _directMovement.NeedToStart=false;
+            _directMovement.NeedToPatrole = false;
             SetTarget(other.transform);
         }
 

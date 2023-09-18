@@ -11,6 +11,7 @@ namespace TDS.Game.Animation
         private static readonly int ShortAttack = Animator.StringToHash("ShortAttack");
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Dead = Animator.StringToHash("Death");
+        private static readonly int Walk = Animator.StringToHash("Speed");
 
         #endregion
 
@@ -29,6 +30,10 @@ namespace TDS.Game.Animation
         public void PlayShortAttack()
         {
             _animator.SetTrigger(ShortAttack);
+        }
+        public void SetSpeed(float value)
+        {
+            _animator.SetFloat(Walk, value);
         }
 
         #endregion

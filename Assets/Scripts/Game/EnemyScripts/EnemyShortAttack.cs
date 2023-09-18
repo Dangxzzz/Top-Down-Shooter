@@ -12,6 +12,7 @@ namespace TDS.Game.EnemyScripts
         
         protected override void OnPerformAttack()
         {
+            Debug.Log("Attack");
             base.OnPerformAttack();
             _hp.Change(-_damage);
             _animation.PlayShortAttack();
