@@ -1,27 +1,20 @@
-using System;
 using TDS.Utillity;
 using UnityEngine;
 
-namespace TDS.Game.EnemyScripts
+namespace TDS.Game.EnemyScripts.Base
 {
-    public class EnemyMovementAgro : EnemyComponents
+    public class EnemyAttackAgro : EnemyComponents
     {
         #region Variables
 
         [SerializeField] private TriggerObserver _triggerObserver;
-        [SerializeField] private EnemyMovement _enemyMovement;
-        [SerializeField] private EnemyDirectMovement _directMovement;
+        [SerializeField] private EnemyAttack _attack;
+        [SerializeField] private EnemyMovement _movement;
         
-     private Vector3 _startPosition;
 
         #endregion
 
         #region Unity lifecycle
-
-        private void Awake()
-        {
-            _startPosition = transform.position;
-        }
 
         private void OnEnable()
         {
@@ -41,26 +34,43 @@ namespace TDS.Game.EnemyScripts
 
         private void OnObserverEnter(Collider2D other)
         {
-            Debug.Log("Go to player");
-            _directMovement.NeedToStart=false;
-            _directMovement.NeedToPatrole = false;
-            SetTarget(other.transform);
+            SetActiveAttack(true);
+
+            if (_movement != null)
+            {
+                _movement.Deactivate();
+            }
         }
 
         private void OnObserverExit(Collider2D other)
         {
-            _directMovement.NeedToStart=true;
-        }
-
-        private void SetTarget(Transform otherTransform)
-        {
-            if (_enemyMovement != null)
+            SetActiveAttack(false);
+            
+            if (_movement != null)
             {
-                _enemyMovement.SetTarget(otherTransform);
+                _movement.Activate();
             }
         }
-        
+
+        private void SetActiveAttack(bool needAttack)
+        {
+            if (_attack == null)
+            {
+                return;
+            }
+
+            if (needAttack)
+            {
+                _attack.StartAttack();
+            }
+            else
+            {
+                _attack.StopAttack();
+            }
+        }
 
         #endregion
     }
+
+
 }

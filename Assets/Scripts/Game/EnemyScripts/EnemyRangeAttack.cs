@@ -1,4 +1,5 @@
-using TDS.Game.Animation;
+using TDS.Game.EnemyScripts.Base;
+using TDS.Utillity;
 using UnityEngine;
 
 namespace TDS.Game.EnemyScripts
@@ -9,7 +10,17 @@ namespace TDS.Game.EnemyScripts
 
         [Header(nameof(EnemyRangeAttack))]
         [SerializeField] private Bullet _bulletPrefab;
-        [SerializeField] private EnemyAnimation _animation;
+
+        private Transform _playerTransform;
+
+        #endregion
+
+        #region Unity lifecycle
+
+        private void Start()
+        {
+            _playerTransform = GameObject.FindWithTag(Tags.PlayerModelTag).transform;
+        }
 
         #endregion
 
@@ -20,7 +31,6 @@ namespace TDS.Game.EnemyScripts
             base.OnPerformAttack();
 
             Instantiate(_bulletPrefab, transform.position, transform.rotation);
-            _animation.PlayAttack();
         }
 
         #endregion

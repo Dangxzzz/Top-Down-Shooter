@@ -2,6 +2,7 @@ using System;
 using TDS.Game.Animation;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TDS.Game.EnemyScripts
 {
@@ -10,6 +11,8 @@ namespace TDS.Game.EnemyScripts
         #region Variables
 
         [SerializeField] private UnitHp _hp;
+        [SerializeField] private EnemyAnimation _anim;
+        
 
 
         #endregion
@@ -47,6 +50,8 @@ namespace TDS.Game.EnemyScripts
                 return;
             }
             IsDead = true;
+            _anim.PlayDeath();
+            gameObject.GetComponent<Collider2D>().enabled = false;
             OnHappened?.Invoke();
         }
 

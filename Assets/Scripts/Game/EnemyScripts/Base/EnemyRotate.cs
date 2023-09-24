@@ -21,7 +21,6 @@ namespace TDS.Game.EnemyScripts
             {
                 return;
             }
-
             Rotate();
         }
 
