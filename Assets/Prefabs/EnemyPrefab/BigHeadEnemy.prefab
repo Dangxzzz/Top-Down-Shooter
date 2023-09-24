@@ -182,7 +182,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -262,7 +262,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.42378426}
@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 8874622456739231251}
   - component: {fileID: 3359412995145271074}
   - component: {fileID: 4631726541110182348}
+  - component: {fileID: 8986158501483428720}
   - component: {fileID: 3291439280859278873}
   - component: {fileID: 5215910986464479629}
   - component: {fileID: 806000368095830007}
@@ -370,6 +371,24 @@ MonoBehaviour:
   - {fileID: 3125314050163600594}
   - {fileID: 7760236544032266787}
   - {fileID: 3291439280859278873}
+  _enemyDeath: {fileID: 3359412995145271074}
+--- !u!114 &8986158501483428720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8029918522025864696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e59d234d0cbfa4ab1a26c40fff9ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items:
+  - ItemPrefab: {fileID: 8492110177458772135, guid: 0176abcfd3f649c4a9debaa1f87f4d42, type: 3}
+    Name: 
+    SpawnWeight: 100
+  _dropChance: 50
   _enemyDeath: {fileID: 3359412995145271074}
 --- !u!114 &3291439280859278873
 MonoBehaviour:
@@ -491,7 +510,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

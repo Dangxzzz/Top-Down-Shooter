@@ -182,7 +182,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 6709997423226842802}
   - component: {fileID: 1844332005310968488}
   - component: {fileID: 9216144141417988130}
+  - component: {fileID: 5215803383914743637}
   - component: {fileID: 4674537263909200136}
   - component: {fileID: 5815633697361039683}
   - component: {fileID: 5618589693539968161}
@@ -290,6 +291,24 @@ MonoBehaviour:
   - {fileID: 197055725345459850}
   - {fileID: 8372941389803565241}
   - {fileID: 4674537263909200136}
+  _enemyDeath: {fileID: 1844332005310968488}
+--- !u!114 &5215803383914743637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6350870412440357823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e59d234d0cbfa4ab1a26c40fff9ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items:
+  - ItemPrefab: {fileID: 8492110177458772135, guid: 0176abcfd3f649c4a9debaa1f87f4d42, type: 3}
+    Name: 
+    SpawnWeight: 100
+  _dropChance: 50
   _enemyDeath: {fileID: 1844332005310968488}
 --- !u!114 &4674537263909200136
 MonoBehaviour:
@@ -408,7 +427,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -476,7 +495,7 @@ GameObject:
   - component: {fileID: 7990971935800834356}
   - component: {fileID: 8934011574678443163}
   - component: {fileID: 1503239651477508169}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: AttackLongAgro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +546,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
