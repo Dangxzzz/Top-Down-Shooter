@@ -7,8 +7,8 @@ namespace TDS.Game.ItemsScripts
     {
         #region Variables
 
-        [SerializeField] private UnitHp _playerHp;
-
+        [SerializeField] private int  _heal;
+        
         #endregion
 
         #region Protected methods
@@ -18,8 +18,10 @@ namespace TDS.Game.ItemsScripts
             if (other.gameObject.CompareTag(Tags.PlayerModelTag))
             {
                 base.OnPerformAction(other);
-                Debug.Log("Collsion");
-                _playerHp.Change(1);
+                if (other.TryGetComponent(out UnitHp unitHp))
+                {
+                    unitHp.Change(+_heal);
+                }
             }
         }
 

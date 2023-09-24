@@ -9,6 +9,18 @@ namespace TDS.Game.ItemsScripts
          [SerializeField] private int _damage;
          [SerializeField] private GameObject _explosion;
          
+         
+         private void OnDrawGizmos()
+         {
+             if (transform.position == null)
+             {
+                 return;
+             }
+
+             Gizmos.color = Color.red;
+             Gizmos.DrawWireSphere(transform.position, _explosiveRadius);
+         }
+         
         protected override void OnPerformAction(Collider2D other)
         {
             if (other.gameObject.CompareTag(Tags.PlayerBullet))

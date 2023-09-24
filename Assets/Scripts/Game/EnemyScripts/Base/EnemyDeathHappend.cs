@@ -9,6 +9,7 @@ namespace TDS.Game.EnemyScripts.Base
         [SerializeField] private EnemyComponents[] _enemyComponents;
         [SerializeField] private EnemyDeath _enemyDeath;
 
+
         #endregion
 
         #region Unity lifecycle
@@ -33,7 +34,11 @@ namespace TDS.Game.EnemyScripts.Base
             {
                 component.Deactivate();
             }
+            Rigidbody2D rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
+            rigidbody2D.velocity=Vector2.zero;
+            rigidbody2D.angularVelocity = 0;
         }
+        
 
         #endregion
     }
