@@ -92573,6 +92573,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7621549667582631770, guid: 64666da1dee86704da496f3b212e65b1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -92832,7 +92836,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8029918522025864696, guid: 88ed0e9bcee9fa04ca3a68520bdf52d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1790378377}
   m_SourcePrefab: {fileID: 100100000, guid: 88ed0e9bcee9fa04ca3a68520bdf52d4, type: 3}
 --- !u!4 &1430359410 stripped
 Transform:
@@ -124158,6 +124165,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 723001063249670587, guid: d011779212f89104f9ab2672786adfdc, type: 3}
   m_PrefabInstance: {fileID: 1782010530}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1790378365 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8029918522025864696, guid: 88ed0e9bcee9fa04ca3a68520bdf52d4, type: 3}
+  m_PrefabInstance: {fileID: 1430359409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1790378377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790378365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e59d234d0cbfa4ab1a26c40fff9ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items: []
+  _dropChance: 0
+  _enemyDeath: {fileID: 0}
 --- !u!1 &1895851124
 GameObject:
   m_ObjectHideFlags: 0
@@ -124505,7 +124532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1340172570108720492, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1732683507371459710, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
       propertyPath: m_Name
