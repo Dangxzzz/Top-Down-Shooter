@@ -6,16 +6,12 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Model
-  m_Controller: {fileID: 9100000, guid: 8ee157b88e563cc408d918ca5aefc1e3, type: 2}
+  m_Name: BigHeadZombieAnimatorController
+  m_Controller: {fileID: 9100000, guid: f55a955b7971a6249889c2943604e90d, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 2229b9993d387c647a3c1a2b16a8a356, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: ab81c113ae3179b49bde8fd8be49c574, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 3fe343b5f8ba0934a8dd24c87e083e5d, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: bbe3bbf9233a49c49ac63730367a4d1e, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 8d0fbb845a7db6249a5961935a5269c1, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 8ae4bbf56f7ba0740b92108bcae63dc6, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 7746e5e01c2ee6e45888618a6dd7c564, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 67ec8e763743c6642aa0487e96d9bf74, type: 2}
-  - m_OriginalClip: {fileID: 7400000, guid: 5863bf0a9d48dd244b21c6004736c177, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 3fa3bc50182d2d14886970023ff9a586, type: 2}
