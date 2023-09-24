@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 namespace TDS.Game.Animation
 {
@@ -6,12 +8,17 @@ namespace TDS.Game.Animation
     {
         #region Variables
 
-        [SerializeField] private Animator _animator;
-
-        private static readonly int ShortAttack = Animator.StringToHash("ShortAttack");
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Dead = Animator.StringToHash("Death");
-        private static readonly int Walk = Animator.StringToHash("Speed");
+        private static readonly int Speed = Animator.StringToHash("Speed");
+
+        [SerializeField] private Animator _animator;
+
+        #endregion
+
+        #region Events
+
+        public event Action OnMeleeAttackHit;
 
         #endregion
 
@@ -24,16 +31,23 @@ namespace TDS.Game.Animation
 
         public void PlayDeath()
         {
+            Debug.Log("Play Death");
             _animator.SetTrigger(Dead);
         }
 
-        public void PlayShortAttack()
-        {
-            _animator.SetTrigger(ShortAttack);
-        }
         public void SetSpeed(float value)
         {
-            _animator.SetFloat(Walk, value);
+            _animator.SetFloat(Speed, value);
+        }
+
+        #endregion
+
+        #region Private methods
+
+        [Preserve]
+        private void MeleeAttackHit()
+        {
+            OnMeleeAttackHit?.Invoke();
         }
 
         #endregion
