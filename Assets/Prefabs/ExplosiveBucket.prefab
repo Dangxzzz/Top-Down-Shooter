@@ -117,7 +117,7 @@ Transform:
   m_Children:
   - {fileID: 3538633572217351220}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &2956228563566378445
 CircleCollider2D:
