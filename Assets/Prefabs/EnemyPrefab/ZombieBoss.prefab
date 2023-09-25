@@ -73,6 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: {fileID: 8128029876165616657}
   _anim: {fileID: 7788798024125055286}
+  _isFinalBoss: 1
 --- !u!114 &821609200046142072
 MonoBehaviour:
   m_ObjectHideFlags: 0
