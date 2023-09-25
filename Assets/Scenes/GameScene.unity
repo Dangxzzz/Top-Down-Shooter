@@ -124506,6 +124506,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6975359552973698030, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
   m_PrefabInstance: {fileID: 7013748654951203270}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6470090366987227178
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3576309316579643657, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_Name
+      value: ZombieBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789170744463461468, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789170744463461468, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789170744463461468, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 14.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789170744463461468, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789170744463461468, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789170744463461468, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789170744463461468, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789170744463461468, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789170744463461468, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789170744463461468, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4789170744463461468, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
 --- !u!1001 &7013748654951203270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124514,26 +124575,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1340172570108720492, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
-      propertyPath: m_Size.x
-      value: 0.91732264
-      objectReference: {fileID: 0}
-    - target: {fileID: 1340172570108720492, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
-      propertyPath: m_Size.y
-      value: 0.8426636
-      objectReference: {fileID: 0}
-    - target: {fileID: 1340172570108720492, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.2581517
-      objectReference: {fileID: 0}
-    - target: {fileID: 1340172570108720492, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.039259404
-      objectReference: {fileID: 0}
-    - target: {fileID: 1340172570108720492, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1732683507371459710, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
       propertyPath: m_Name
       value: PlayerWoman
