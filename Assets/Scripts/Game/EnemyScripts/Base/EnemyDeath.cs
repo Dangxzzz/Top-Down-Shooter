@@ -1,10 +1,8 @@
 using System;
 using TDS.Game.Animation;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace TDS.Game.EnemyScripts
+namespace TDS.Game.EnemyScripts.Base
 {
     public class EnemyDeath : EnemyComponents
     {
@@ -12,19 +10,33 @@ namespace TDS.Game.EnemyScripts
 
         [SerializeField] private UnitHp _hp;
         [SerializeField] private EnemyAnimation _anim;
-        
+        [SerializeField] private bool _isFinalBoss;
 
+        #endregion
+
+        #region Events
+
+        public static event Action<EnemyDeath> OnCreated;
+        public static event Action<EnemyDeath> OnDead;
+
+        public static event Action OnFinalBossDead;
+
+        public event Action OnHappened;
 
         #endregion
 
         #region Properties
 
-        public event Action OnHappened;
         public bool IsDead { get; private set; }
 
         #endregion
 
         #region Unity lifecycle
+
+        private void Start()
+        {
+            OnCreated?.Invoke(this);
+        }
 
         private void OnEnable()
         {
@@ -41,18 +53,25 @@ namespace TDS.Game.EnemyScripts
 
         #region Private methods
 
-        
-
         private void OnHpChanged(int currentHp)
         {
             if (IsDead || currentHp > 0)
             {
                 return;
             }
+
             IsDead = true;
             _anim.PlayDeath();
             gameObject.GetComponent<Collider2D>().enabled = false;
             OnHappened?.Invoke();
+            if (_isFinalBoss)
+            {
+                OnFinalBossDead?.Invoke();
+            }
+            else
+            {
+                OnDead?.Invoke(this);
+            }
         }
 
         #endregion

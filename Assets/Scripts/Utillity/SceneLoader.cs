@@ -1,3 +1,5 @@
+using TDS.Game.EnemyScripts;
+using TDS.Game.EnemyScripts.Base;
 using TDS.Game.PlayerScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,11 +20,13 @@ namespace TDS.Utillity
         private void OnEnable()
         {
             _playerDeath.OnHappened += RestartScene;
+            EnemyDeath.OnFinalBossDead += LoadNextlevelTimer;
         }
 
         private void OnDisable()
         {
             _playerDeath.OnHappened -= RestartScene;
+            EnemyDeath.OnFinalBossDead -= LoadNextlevelTimer;
         }
 
         #endregion
@@ -36,6 +40,17 @@ namespace TDS.Utillity
         private void ReloadScene()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        private void LoadNextLevel()
+        {
+            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+
+        private void LoadNextlevelTimer()
+        {
+            this.StartTimer(_timeToRestart, LoadNextLevel);
         }
 
         #endregion
