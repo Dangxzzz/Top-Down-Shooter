@@ -9,7 +9,7 @@ namespace TDS.Game
 
         [SerializeField] private int _initialHp = 3;
         [SerializeField] private int _maxHp = 3;
-        
+
         #endregion
 
         #region Events
@@ -34,15 +34,6 @@ namespace TDS.Game
                 }
             }
         }
-
-        #endregion
-
-        #region Unity lifecycle
-
-        // private void Awake()
-        // {
-        //     Current = _initialHp;
-        // }
 
         #endregion
 
