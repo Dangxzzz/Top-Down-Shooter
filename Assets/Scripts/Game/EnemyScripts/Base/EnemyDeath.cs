@@ -19,8 +19,6 @@ namespace TDS.Game.EnemyScripts.Base
         public static event Action<EnemyDeath> OnCreated;
         public static event Action<EnemyDeath> OnDead;
 
-        public static event Action OnFinalBossDead;
-
         public event Action OnHappened;
 
         #endregion
@@ -28,6 +26,8 @@ namespace TDS.Game.EnemyScripts.Base
         #region Properties
 
         public bool IsDead { get; private set; }
+
+        public bool IsFinalBoss => _isFinalBoss;
 
         #endregion
 
@@ -64,14 +64,8 @@ namespace TDS.Game.EnemyScripts.Base
             _anim.PlayDeath();
             gameObject.GetComponent<Collider2D>().enabled = false;
             OnHappened?.Invoke();
-            if (_isFinalBoss)
-            {
-                OnFinalBossDead?.Invoke();
-            }
-            else
-            {
-                OnDead?.Invoke(this);
-            }
+            OnDead?.Invoke(this);
+
         }
 
         #endregion

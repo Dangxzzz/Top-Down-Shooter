@@ -78,7 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e0a4d5caa79fa4f9c55de742260743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bossFightLabel: {fileID: 0}
+  _playerDeath: {fileID: 0}
+  _sceneLoader: {fileID: 3677174329615805175}
 --- !u!1 &1938350675035079974
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +127,7 @@ MonoBehaviour:
   _levelService: {fileID: 6826602299955122917}
   _bossPrefab: {fileID: 3576309316579643657, guid: a36724b4944594f48bda99c2be5f437a, type: 3}
   _bossSpawnPlace: {fileID: 0}
+  _bossFightLabel: {fileID: 0}
 --- !u!1 &4640413676966644323
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,5 +172,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11ed74ffc0441ed4891990a93d141b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerDeath: {fileID: 0}
   _timeToRestart: 3

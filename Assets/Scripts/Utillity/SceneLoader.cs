@@ -1,6 +1,3 @@
-using TDS.Game.EnemyScripts;
-using TDS.Game.EnemyScripts.Base;
-using TDS.Game.PlayerScripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,37 +7,25 @@ namespace TDS.Utillity
     {
         #region Variables
 
-        [SerializeField] private PlayerDeath _playerDeath;
         [SerializeField] private float _timeToRestart;
 
         #endregion
 
-        #region Unity lifecycle
-        
-        private void OnEnable()
+        #region Public methods
+
+        public void LoadNextlevelTimer()
         {
-            _playerDeath.OnHappened += RestartScene;
-            EnemyDeath.OnFinalBossDead += LoadNextlevelTimer;
+            this.StartTimer(_timeToRestart, LoadNextLevel);
         }
 
-        private void OnDisable()
+        public void RestartScene()
         {
-            _playerDeath.OnHappened -= RestartScene;
-            EnemyDeath.OnFinalBossDead -= LoadNextlevelTimer;
+            this.StartTimer(_timeToRestart, ReloadScene);
         }
 
         #endregion
 
         #region Private methods
-
-        private void RestartScene()
-        {
-            this.StartTimer(_timeToRestart, ReloadScene);
-        }
-        private void ReloadScene()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
 
         private void LoadNextLevel()
         {
@@ -48,9 +33,9 @@ namespace TDS.Utillity
             SceneManager.LoadScene(nextSceneIndex);
         }
 
-        private void LoadNextlevelTimer()
+        private void ReloadScene()
         {
-            this.StartTimer(_timeToRestart, LoadNextLevel);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         #endregion

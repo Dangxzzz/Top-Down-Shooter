@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -28,7 +29,6 @@ namespace TDS
         {
             if (_isActive)
             {
-                Debug.Log("ER");
                 ShowLabel();
             }
         }
@@ -39,14 +39,7 @@ namespace TDS
 
         private void ShowLabel()
         {
-            Color labelColor = _label.color; 
-            labelColor.a -= 0.001f;
-            _label.color = labelColor;
-            if (labelColor.a <= 0)
-            {
-                gameObject.SetActive(false);
-                _isActive = false;
-            }
+            _label.DOFade(0f, 3f).OnComplete(() => gameObject.SetActive(false));
         }
 
         #endregion

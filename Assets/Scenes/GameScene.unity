@@ -124828,9 +124828,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2070207166}
     - target: {fileID: 4283451858155913434, guid: 76897e32f42b9e74caf01b1419ce6a96, type: 3}
+      propertyPath: _bossFightLabel
+      value: 
+      objectReference: {fileID: 120151165}
+    - target: {fileID: 4283451858155913434, guid: 76897e32f42b9e74caf01b1419ce6a96, type: 3}
       propertyPath: _bossSpawnPlace
       value: 
       objectReference: {fileID: 2120333484}
+    - target: {fileID: 6826602299955122917, guid: 76897e32f42b9e74caf01b1419ce6a96, type: 3}
+      propertyPath: _playerDeath
+      value: 
+      objectReference: {fileID: 2070207166}
     - target: {fileID: 6826602299955122917, guid: 76897e32f42b9e74caf01b1419ce6a96, type: 3}
       propertyPath: _bossFightLabel
       value: 

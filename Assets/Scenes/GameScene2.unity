@@ -129313,18 +129313,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Services
       objectReference: {fileID: 0}
-    - target: {fileID: 3677174329615805175, guid: 76897e32f42b9e74caf01b1419ce6a96, type: 3}
-      propertyPath: _playerDeath
+    - target: {fileID: 4283451858155913434, guid: 76897e32f42b9e74caf01b1419ce6a96, type: 3}
+      propertyPath: _bossFightLabel
       value: 
-      objectReference: {fileID: 564399784}
+      objectReference: {fileID: 1922718031}
     - target: {fileID: 4283451858155913434, guid: 76897e32f42b9e74caf01b1419ce6a96, type: 3}
       propertyPath: _bossSpawnPlace
       value: 
       objectReference: {fileID: 1675684599}
     - target: {fileID: 6826602299955122917, guid: 76897e32f42b9e74caf01b1419ce6a96, type: 3}
-      propertyPath: _bossFightLabel
+      propertyPath: _playerDeath
       value: 
-      objectReference: {fileID: 1922718031}
+      objectReference: {fileID: 564399784}
     - target: {fileID: 8190410579221571007, guid: 76897e32f42b9e74caf01b1419ce6a96, type: 3}
       propertyPath: m_RootOrder
       value: 8

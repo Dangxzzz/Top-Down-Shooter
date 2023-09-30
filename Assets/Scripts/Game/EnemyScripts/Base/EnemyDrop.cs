@@ -15,40 +15,7 @@ namespace TDS.Game.EnemyScripts.Base
 
         #endregion
 
-        #region Local data
-
-        [Serializable]
-        private class ItemSpawnData
-        {
-            #region Variables
-
-            public Item ItemPrefab;
-            [HideInInspector]
-            public string Name;
-            public int SpawnWeight;
-
-            #endregion
-
-            #region Public methods
-
-            public void OnValidate()
-            {
-                if (ItemPrefab == null)
-                {
-                    Name = "Empty";
-                }
-                else
-                {
-                    Name = $"{ItemPrefab.name}:{SpawnWeight}";
-                }
-            }
-
-            #endregion
-        }
-
-        #endregion
-
-        #region Private methods
+        #region Unity lifecycle
 
         private void OnEnable()
         {
@@ -65,6 +32,23 @@ namespace TDS.Game.EnemyScripts.Base
                 _enemyDeath.OnHappened -= DropItem;
             }
         }
+
+        private void OnValidate()
+        {
+            if (_items == null)
+            {
+                return;
+            }
+
+            foreach (ItemSpawnData spawnData in _items)
+            {
+                spawnData.OnValidate();
+            }
+        }
+
+        #endregion
+
+        #region Private methods
 
         private void DropItem()
         {
@@ -103,8 +87,41 @@ namespace TDS.Game.EnemyScripts.Base
                     return;
                 }
             }
+        }
+
+        #endregion
+
+        #region Local data
+
+        [Serializable]
+        private class ItemSpawnData
+        {
+            #region Variables
+            
+            [HideInInspector]
+            public string Name;
+            public Item ItemPrefab;
+            public int SpawnWeight;
+
+            #endregion
+
+            #region Public methods
+
+            public void OnValidate()
+            {
+                if (ItemPrefab == null)
+                {
+                    Name = "Empty";
+                }
+                else
+                {
+                    Name = $"{ItemPrefab.name}:{SpawnWeight}";
+                }
+            }
 
             #endregion
         }
+
+        #endregion
     }
 }
