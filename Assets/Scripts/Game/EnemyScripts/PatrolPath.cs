@@ -12,29 +12,9 @@ namespace TDS.Game.EnemyScripts
 
         #endregion
 
-        #region Unity lifecycle
+        #region Properties
 
-        private void OnDrawGizmos()
-        {
-            if (_points == null || _points.Length == 0)
-            {
-                return;
-            }
-
-            Gizmos.color = Color.blue;
-            Vector3 previousPosition = _points[0].position;
-            Gizmos.DrawSphere(previousPosition, 0.15f);
-
-            for (int i = 1; i < _points.Length; i++)
-            {
-                Vector3 currentPosition = _points[i].position;
-                Gizmos.DrawSphere(currentPosition, 0.15f);
-                Gizmos.DrawLine(previousPosition, currentPosition);
-                previousPosition = currentPosition;
-            }
-
-            Gizmos.DrawLine(previousPosition, _points[0].position);
-        }
+        public Transform[] Points => _points;
 
         #endregion
 

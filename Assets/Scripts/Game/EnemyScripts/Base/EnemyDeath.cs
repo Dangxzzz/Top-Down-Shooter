@@ -65,7 +65,6 @@ namespace TDS.Game.EnemyScripts.Base
             gameObject.GetComponent<Collider2D>().enabled = false;
             OnHappened?.Invoke();
             OnDead?.Invoke(this);
-
         }
 
         #endregion

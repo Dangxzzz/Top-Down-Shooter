@@ -14,6 +14,7 @@ namespace TDS.Game.PlayerScripts
         #region Events
 
         public event Action OnHappened;
+        public event Action<float> OnHpChangedEvent;
 
         #endregion
 
@@ -44,6 +45,7 @@ namespace TDS.Game.PlayerScripts
         {
             if (IsDead || currentHp > 0)
             {
+                OnHpChangedEvent?.Invoke(_hp.Current);
                 return;
             }
 

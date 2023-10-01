@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TDS.Game.EnemyScripts.Base;
 using TDS.Game.PlayerScripts;
+using TDS.UI;
 using UnityEngine;
 
 namespace TDS.Utillity
@@ -12,6 +13,8 @@ namespace TDS.Utillity
 
         [SerializeField] private PlayerDeath _playerDeath;
         [SerializeField] private SceneLoader _sceneLoader;
+        [SerializeField] private HpBar _hpBar;
+        
 
         private readonly List<EnemyDeath> _enemies = new();
 
@@ -30,6 +33,7 @@ namespace TDS.Utillity
             EnemyDeath.OnCreated += AddEnemy;
             EnemyDeath.OnDead += RemoveEnemy;
             _playerDeath.OnHappened += RestartScene;
+            _playerDeath.OnHpChangedEvent += ChangeBar;
         }
 
         private void OnDisable()
@@ -37,16 +41,21 @@ namespace TDS.Utillity
             EnemyDeath.OnCreated -= AddEnemy;
             EnemyDeath.OnDead -= RemoveEnemy;
             _playerDeath.OnHappened -= RestartScene;
+            _playerDeath.OnHpChangedEvent -= ChangeBar;
         }
 
         #endregion
 
         #region Private methods
 
+        private void ChangeBar(float currentHp)
+        {
+            Debug.Log($"CurrentHP {currentHp}");
+            _hpBar.ChangeBar(currentHp);
+        }
         private void AddEnemy(EnemyDeath enemyDeath)
         {
             _enemies.Add(enemyDeath);
-            Debug.Log($" Enemies {_enemies.Count}");
         }
 
         private void LoadNextlevelTimer()
