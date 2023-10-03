@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 8411027294515310872}
   - component: {fileID: 5192024984429561917}
   - component: {fileID: 5090194215871435414}
+  - component: {fileID: 657185227243595631}
   m_Layer: 11
   m_Name: MovementAgro
   m_TagString: Untagged
@@ -187,7 +188,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 13.6
+  m_Radius: 9.24
 --- !u!114 &5090194215871435414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +201,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2414340a25a031f4c9efe92238c263b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &657185227243595631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799136558679113236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a064d1ebf7d44e04ca53b6d4cb20fa02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldOfViewAngle: 40
+  viewDistance: 15
+  _playerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  _target: {fileID: 852210484402884229, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
 --- !u!1 &6350870412440357823
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,6 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: {fileID: 6709997423226842802}
   _anim: {fileID: 1066672730626919359}
+  _isFinalBoss: 0
 --- !u!114 &9216144141417988130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,8 +325,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _items:
-  - ItemPrefab: {fileID: 8492110177458772135, guid: 0176abcfd3f649c4a9debaa1f87f4d42, type: 3}
-    Name: 
+  - Name: MedChest:100
+    ItemPrefab: {fileID: 8492110177458772135, guid: 0176abcfd3f649c4a9debaa1f87f4d42, type: 3}
     SpawnWeight: 100
   _dropChance: 50
   _enemyDeath: {fileID: 1844332005310968488}
@@ -352,6 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195f31a59eda24b46b8dd70585926443, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _raycastObserver: {fileID: 657185227243595631}
   _triggerObserver: {fileID: 5090194215871435414}
   _enemyMovement: {fileID: 5815633697361039683}
   _idle: {fileID: 5772613298165224270}
