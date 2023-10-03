@@ -14,6 +14,7 @@ namespace TDS.Utillity
         [SerializeField] private PlayerDeath _playerDeath;
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private HpBar _hpBar;
+        [SerializeField] private GameOverScreen _gameOverBack;
         
 
         private readonly List<EnemyDeath> _enemies = new();
@@ -30,17 +31,19 @@ namespace TDS.Utillity
 
         private void Start()
         {
+            _gameOverBack.OnRestartButtonClick += RestartScene;
             EnemyDeath.OnCreated += AddEnemy;
             EnemyDeath.OnDead += RemoveEnemy;
-            _playerDeath.OnHappened += RestartScene;
+            _playerDeath.OnHappened += SetActiveGameOverScreen;
             _playerDeath.OnHpChangedEvent += ChangeBar;
         }
 
         private void OnDisable()
         {
+            _gameOverBack.OnRestartButtonClick -= RestartScene;
             EnemyDeath.OnCreated -= AddEnemy;
             EnemyDeath.OnDead -= RemoveEnemy;
-            _playerDeath.OnHappened -= RestartScene;
+            _playerDeath.OnHappened -=SetActiveGameOverScreen ;
             _playerDeath.OnHpChangedEvent -= ChangeBar;
         }
 
@@ -81,7 +84,13 @@ namespace TDS.Utillity
 
         private void RestartScene()
         {
-            _sceneLoader.RestartScene();
+            _sceneLoader.ReloadScene();
+        }
+
+        private void SetActiveGameOverScreen()
+        {
+            Debug.Log($"gameoverscreen");
+            _gameOverBack.gameObject.SetActive(true);
         }
 
         #endregion

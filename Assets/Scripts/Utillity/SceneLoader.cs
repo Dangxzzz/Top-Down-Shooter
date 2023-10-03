@@ -17,12 +17,7 @@ namespace TDS.Utillity
         {
             this.StartTimer(_timeToRestart, LoadNextLevel);
         }
-
-        public void RestartScene()
-        {
-            this.StartTimer(_timeToRestart, ReloadScene);
-        }
-
+        
         #endregion
 
         #region Private methods
@@ -33,7 +28,7 @@ namespace TDS.Utillity
             SceneManager.LoadScene(nextSceneIndex);
         }
 
-        private void ReloadScene()
+        public void ReloadScene()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
