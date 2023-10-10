@@ -24,7 +24,7 @@ namespace TDS.Game.EnemyScripts.Base
                 _enemyDeath.OnHappened += DropItem;
             }
         }
-
+        
         private void OnDisable()
         {
             if (_enemyDeath != null)
@@ -50,7 +50,7 @@ namespace TDS.Game.EnemyScripts.Base
 
         #region Private methods
 
-        private void DropItem()
+        private void DropItem(EnemyDeath enemyDeath)
         {
             if (_items == null || _items.Length == 0)
             {

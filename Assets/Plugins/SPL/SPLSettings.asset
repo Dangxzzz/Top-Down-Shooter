@@ -14,22 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NeedOpenSceneOnStart: 1
   StartScene:
-    Name: GameScene
+    Name: Bootstraper
     Index: 0
-    Path: Assets/Scenes/GameScene.unity
-    GuidHex: 2cda990e2423bbf4892e6590ba056729
+    Path: Assets/Scenes/Bootstraper.unity
+    GuidHex: f59ca346a29e37a4381b98c84196a61d
   NeedOpenSceneOnStop: 0
   StopScene:
     Name: GameScene
-    Index: 0
+    Index: 1
     Path: Assets/Scenes/GameScene.unity
     GuidHex: 2cda990e2423bbf4892e6590ba056729
   AllScenes:
-  - Name: GameScene
+  - Name: Bootstraper
     Index: 0
+    Path: Assets/Scenes/Bootstraper.unity
+    GuidHex: f59ca346a29e37a4381b98c84196a61d
+  - Name: GameScene
+    Index: 1
     Path: Assets/Scenes/GameScene.unity
     GuidHex: 2cda990e2423bbf4892e6590ba056729
   - Name: GameScene2
-    Index: 1
+    Index: 2
     Path: Assets/Scenes/GameScene2.unity
     GuidHex: 3d366b1ec1a5f9b4d824e3562a960700

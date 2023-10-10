@@ -1,10 +1,8 @@
 using TDS.Infrastracture.Services;
 using TDS.Infrastracture.StateMachine;
-// using TDS.Infrastructure.Locator;
-// using TDS.Infrastructure.State;
 using UnityEngine;
 
-namespace TDS.Infrastructure
+namespace TDS.Infrastracture
 {
     public class Bootstrapper : MonoBehaviour
     {
@@ -12,9 +10,9 @@ namespace TDS.Infrastructure
 
         private void Start()
         {
-            StateMachine sm = new();
+            StateMachine.StateMachine sm = new();
             ServiceLocator.Instance.Register(sm);
-            // sm.Enter<BootstrapState>();
+            sm.Enter<BootstrapState>();
         }
 
         #endregion

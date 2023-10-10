@@ -38,7 +38,7 @@ namespace TDS.Infrastracture.Services
 
         #region Public methods
 
-        public T Get<T>() where T : class, IService
+        public T Get<T>() where T : class
         {
             _servicesByTypes.TryGetValue(typeof(T), out IService value);
             return value as T;

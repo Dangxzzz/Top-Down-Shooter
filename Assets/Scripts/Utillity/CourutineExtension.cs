@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TDS.Utillity
 {
-    public static class CourutineExtension
+    public static class CoroutineExtensions
     {
         #region Public methods
 

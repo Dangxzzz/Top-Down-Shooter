@@ -18,7 +18,7 @@ namespace TDS.Game.EnemyScripts.Base
         {
             _enemyDeath.OnHappened += OnDead;
         }
-
+        
         private void OnDisable()
         {
             _enemyDeath.OnHappened -= OnDead;
@@ -28,7 +28,7 @@ namespace TDS.Game.EnemyScripts.Base
 
         #region Private methods
 
-        private void OnDead()
+        private void OnDead(EnemyDeath enemyDeath)
         {
             foreach (EnemyComponents component in _enemyComponents)
             {
