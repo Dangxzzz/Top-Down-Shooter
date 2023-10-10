@@ -1,7 +1,13 @@
-﻿namespace TDS.Infrastracture.Services.SceneLoadingService
+﻿using TDS.Infrastracture.Locator;
+using UnityEngine.SceneManagement;
+
+namespace TDS.Infrastracture.Services.SceneLoadingService
 {
-    public class SceneLoading
+    public class SceneLoadingService : IService
     {
-        
+        public void LoadScene(string sceneName)
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
 }
