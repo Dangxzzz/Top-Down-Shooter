@@ -3,12 +3,14 @@ using UnityEngine;
 
 namespace TDS.Utillity
 {
+    [RequireComponent(typeof(Collider2D))]
     public class TriggerObserver : MonoBehaviour
     {
         #region Events
 
         public event Action<Collider2D> OnEnter;
         public event Action<Collider2D> OnExit;
+        public event Action<Collider2D> OnStay;
 
         #endregion
 
@@ -24,10 +26,11 @@ namespace TDS.Utillity
             OnExit?.Invoke(other);
         }
 
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            OnStay?.Invoke(other);
+        }
+
         #endregion
     }
 }
-
-
-
-
