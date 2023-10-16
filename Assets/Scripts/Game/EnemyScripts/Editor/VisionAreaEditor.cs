@@ -6,24 +6,24 @@ using UnityEngine;
 namespace TDS.Game.EnemyScripts.Editor
 {
     [CustomEditor(typeof(VisionArea))]
-    public class VisonAreaEditor : UnityEditor.Editor
+    public class VisionAreaEditor : UnityEditor.Editor
     {
         private void OnSceneGUI()
         {
             VisionArea fov = (VisionArea)target;
-            Handles.color = Color.white;
-            
-            Vector3 position2D = new Vector3(fov.transform.position.x, fov.transform.position.y, 0f); 
-            
-            Handles.DrawWireArc(position2D, Vector3.forward, Vector3.up, 360, fov.Radius);
+            Handles.color = Color.red;
+            Handles.zTest = UnityEngine.Rendering.CompareFunction.Less;
+            Vector3 position2D = fov.transform.position;
 
+            Quaternion rotation = Quaternion.Euler(0, 0, fov.transform.eulerAngles.z);
             
-            Vector3 viewAngle01 = Quaternion.Euler(0, 0, fov.Angle / 2) * Vector3.down; // Устанавливаем угол вправо
-            Vector3 viewAngle02 = Quaternion.Euler(0, 0, -fov.Angle / 2) * Vector3.down;
+            Vector3 viewAngle01 = rotation * Quaternion.Euler(0, 0, fov.Angle / 2) * Vector3.down;
+            Vector3 viewAngle02 = rotation * Quaternion.Euler(0, 0, -fov.Angle / 2) * Vector3.down;
             
-            // Vector3 viewAngle01 = DirectionFromAngle(fov.transform.eulerAngles.z, -fov.Angle / 2); // Меняем eulerY на eulerZ
-            // Vector3 viewAngle02 = DirectionFromAngle(fov.transform.eulerAngles.z, fov.Angle / 2); // Меняем eulerY на eulerZ
-
+            
+            Handles.DrawWireArc(position2D, Vector3.forward, Vector3.down, 360, fov.Radius);
+            Handles.DrawWireArc(position2D, Vector3.forward, Vector3.up, 360, fov.MinRadius);
+            
             Handles.color = Color.yellow;
             Handles.DrawLine(position2D, position2D + viewAngle01 * fov.Radius);
             Handles.DrawLine(position2D, position2D + viewAngle02 * fov.Radius);
@@ -34,12 +34,6 @@ namespace TDS.Game.EnemyScripts.Editor
                 Handles.DrawLine(fov.transform.position, fov.PlayerRef.transform.position);
             }
         }
-
-        private Vector3 DirectionFromAngle(float eulerZ, float angleInDegrees)
-        {
-            angleInDegrees += eulerZ; 
-
-            return new Vector3(Mathf.Cos(angleInDegrees * Mathf.Deg2Rad), Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0f);
-        }
+        
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using TDS.Infrastracture.Services;
+using TDS.Infrastracture.Services.GamePlay;
 using UnityEngine;
 
 namespace TDS.Game.PlayerScripts
@@ -41,7 +43,7 @@ namespace TDS.Game.PlayerScripts
 
         #region Private methods
 
-        private void OnHpChanged(int currentHp)
+        private void OnHpChanged(float currentHp)
         {
             if (IsDead || currentHp > 0)
             {
@@ -50,6 +52,7 @@ namespace TDS.Game.PlayerScripts
             }
 
             IsDead = true;
+            ServiceLocator.Instance.Get<GameplayService>().SetCurrentHp(currentHp);
             OnHappened?.Invoke();
         }
 

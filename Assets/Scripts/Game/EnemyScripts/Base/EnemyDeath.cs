@@ -43,7 +43,7 @@ namespace TDS.Game.EnemyScripts.Base
 
         #region Private methods
 
-        private void OnHpChanged(int currentHp)
+        private void OnHpChanged(float currentHp)
         {
             if (IsDead || currentHp > 0)
             {

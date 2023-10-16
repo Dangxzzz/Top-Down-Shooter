@@ -1,16 +1,19 @@
-
 using TDS.Utillity;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace TDS.Game.EnemyScripts
+namespace TDS.Game.EnemyScripts.Base
 {
     public class EnemyRotate : EnemyComponents
     {
         #region Variables
 
-        [SerializeField] private TriggerObserver _triggerObserver;
+        [SerializeField] private VisionArea _visionArea;
+        [SerializeField] private LayerMask _obstacleMask;
+        
         private bool _isPatroleMode;
         private Transform _target;
+        private bool _isFollow;
 
         #endregion
 
@@ -27,33 +30,47 @@ namespace TDS.Game.EnemyScripts
 
         private void OnEnable()
         {
-            _triggerObserver.OnEnter += OnObserverEnter;
-            _triggerObserver.OnExit += OnObserverExit;
+            _visionArea.OnStay += OnObserverStay;
+            _visionArea.OnExit += OnObserverExit;
         }
 
         private void OnDisable()
         {
-            _triggerObserver.OnEnter -= OnObserverEnter;
-            _triggerObserver.OnExit -= OnObserverExit;
+            _visionArea.OnStay -= OnObserverStay;
+            _visionArea.OnExit -= OnObserverExit;
         }
 
         #endregion
 
         #region Private methods
 
-        private void OnObserverEnter(Collider2D other)
+        private void OnObserverStay(Collider2D other)
         {
+            if (_isFollow)
+            { //TODO: DANYA REMOVE THIS!!!!!!!!!!!!!!!!!!!!!!!
+                return;
+            }
+            Vector3 direction = other.transform.position - transform.position;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, direction.magnitude, _obstacleMask);
+            if (hit.transform != null)
+            {
+                return;
+            }
+            _isFollow = true;
             _target = other.transform;
         }
 
-        private void OnObserverExit(Collider2D other)
+        private void OnObserverExit()
         {
             _target = null;
         }
 
         private void Rotate()
         {
-            if (_isPatroleMode) { }
+            if (_isPatroleMode)
+            {
+                return;
+            }
             else
             {
                 RotateToTarget(_target);

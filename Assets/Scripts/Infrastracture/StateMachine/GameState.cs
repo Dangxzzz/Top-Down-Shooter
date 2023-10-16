@@ -1,16 +1,22 @@
-﻿using SPL.Editor;
+﻿using TDS.Game.PlayerScripts;
 using TDS.Infrastracture.Services;
+using TDS.Infrastracture.Services.GamePlay;
+using TDS.Infrastracture.Services.Input;
+using TDS.Infrastracture.Services.LevelMenegmentService;
 using TDS.Infrastracture.Services.Missions;
-using TDS.Infrastracture.Services.SceneLoadingService;
 using TDS.Utillity;
-using Unity.VisualScripting;
 using UnityEngine;
-using Scene = TDS.Infrastracture.Services.SceneLoadingService.Scene;
 
 namespace TDS.Infrastracture.StateMachine
 {
     public class GameState : AppState
     {
+        #region Variables
+
+        private PlayerMovement _playerMovement;
+
+        #endregion
+
         #region Setup/Teardown
 
         public GameState(ServiceLocator serviceLocator) : base(serviceLocator) { }
@@ -21,27 +27,40 @@ namespace TDS.Infrastracture.StateMachine
 
         public override void Enter()
         {
-            Debug.LogError($"GameState Enter '{Time.frameCount}'");
-
-            ServiceLocator.Get<SceneLoadingService>().LoadScene(Scene.Game);
+            LevelManagementService levelManagementService = ServiceLocator.Get<LevelManagementService>();
+            levelManagementService.Initialize();
+            levelManagementService.LoadCurrentLevel();
 
             ServiceLocator.Get<RunnerCourutine>().StartFrameTimer(1, InitAfterLoadScene);
         }
 
         public override void Exit()
         {
+            _playerMovement.Dispose();
+            
             Debug.LogError("GameState Exit");
             ServiceLocator.Get<MissionGameService>().Dispose();
+            ServiceLocator.Get<GameplayService>().Dispose();
+            ServiceLocator.Get<IInputService>().Dispose();
         }
 
         #endregion
 
         #region Private methods
 
-        private void InitAfterLoadScene()
+        public void InitAfterLoadScene()
         {
             Debug.LogError($"GameState InitAfterLoadScene '{Time.frameCount}'");
             ServiceLocator.Get<MissionGameService>().Initialize();
+            ServiceLocator.Get<GameplayService>().Initialize();
+            
+            _playerMovement = Object.FindObjectOfType<PlayerMovement>();
+            Transform playerMovementTransform = _playerMovement.transform;
+
+            IInputService inputService = ServiceLocator.Get<IInputService>();
+            inputService.Initialize(Camera.main, playerMovementTransform);
+
+            _playerMovement.Construct(inputService);
         }
 
         #endregion

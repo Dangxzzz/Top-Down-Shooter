@@ -7,20 +7,20 @@ namespace TDS.Game
     {
         #region Variables
 
-        [SerializeField] private int _initialHp = 3;
-        [SerializeField] private int _maxHp = 3;
+        [SerializeField] private float _initialHp = 100;
+        [SerializeField] private int _maxHp = 100;
 
         #endregion
 
         #region Events
 
-        public event Action<int> OnChanged;
+        public event Action<float> OnChanged;
 
         #endregion
 
         #region Properties
 
-        public int Current
+        public float Current
         {
             get => _initialHp;
             private set
@@ -34,6 +34,8 @@ namespace TDS.Game
                 }
             }
         }
+
+        public int MaxHp => _maxHp;
 
         #endregion
 

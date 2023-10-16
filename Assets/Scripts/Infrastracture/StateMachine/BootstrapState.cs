@@ -1,4 +1,7 @@
 ﻿using TDS.Infrastracture.Services;
+using TDS.Infrastracture.Services.GamePlay;
+using TDS.Infrastracture.Services.Input;
+using TDS.Infrastracture.Services.LevelMenegmentService;
 using TDS.Infrastracture.Services.Missions;
 using TDS.Infrastracture.Services.SceneLoadingService;
 using Unity.VisualScripting;
@@ -20,10 +23,19 @@ namespace TDS.Infrastracture.StateMachine
         {
             Debug.LogError("BootstrapState Enter");
 
-            ServiceLocator.Register(new SceneLoadingService());
-            ServiceLocator.Register(new MissionGameService());
+            SceneLoadingService sceneLoadingService = new();
+            ServiceLocator.Register(sceneLoadingService);
+            MissionGameService missionGameService = new();
+            ServiceLocator.Register(missionGameService);
+            LevelManagementService levelManagementService = new(sceneLoadingService);
+            ServiceLocator.Register(levelManagementService);
             ServiceLocator.RegisterMonoBeh<RunnerCourutine>();
-
+            ServiceLocator.Register(new GameplayService(missionGameService, levelManagementService, StateMachine));
+#if UNITY_STANDALONE
+            ServiceLocator.Register<IInputService>(new StandaloneInputService());
+#elif UNITY_ANDROID || UNITY_IOS
+           //TODO: DANYA MAKE MOBILEINPUTSERVICE
+#endif
             StateMachine.Enter<MenuState>();
         }
 

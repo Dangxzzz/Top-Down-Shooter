@@ -1,4 +1,3 @@
-
 using TDS.Utillity;
 using UnityEngine;
 
@@ -7,10 +6,14 @@ namespace TDS.Game.EnemyScripts.Base
     public class EnemyMovementAgro : EnemyComponents
     {
         #region Variables
-        
-        [SerializeField] private TriggerObserver _triggerObserver;
+
+        [SerializeField] private VisionArea _visionArea;
         [SerializeField] private EnemyMovement _enemyMovement;
         [SerializeField] private EnemyIdle _idle;
+        [SerializeField] private LayerMask _obstacleMask;
+
+        private bool _isFollow;
+        private Transform _player;
 
         #endregion
 
@@ -18,34 +21,42 @@ namespace TDS.Game.EnemyScripts.Base
 
         private void OnEnable()
         {
-            _triggerObserver.OnEnter += OnObserverEnter;
-            _triggerObserver.OnExit += OnObserverExit;
+            // _visionArea = GetComponent<VisionArea>();
+            _visionArea.OnStay += OnObserverStay;
+            _visionArea.OnExit += OnObserverExit;
         }
 
         private void OnDisable()
         {
-            _triggerObserver.OnEnter -= OnObserverEnter;
-            _triggerObserver.OnExit -= OnObserverExit;
+            _visionArea.OnExit -= OnObserverExit;
+            _visionArea.OnStay -= OnObserverStay;
         }
-
+        
         #endregion
 
         #region Private methods
 
-        private void OnObserverEnter(Collider2D other)
+        private void OnObserverExit()
         {
-            if (other.transform == null)
+            Debug.Log("Outside");
+            _isFollow = false;
+            SetTarget(null);
+        }
+
+        private void OnObserverStay(Collider2D other)
+        {
+            if (_isFollow)
             {
                 return;
             }
-
-            Debug.Log(other);
+            Vector3 direction = other.transform.position - transform.position;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, direction.magnitude, _obstacleMask);
+            if (hit.transform != null)
+            {
+                return;
+            }
+            _isFollow = true;
             SetTarget(other.transform);
-        }
-        
-        private void OnObserverExit(Collider2D other)
-        {
-            SetTarget(null);
         }
 
         private void SetTarget(Transform otherTransform)
