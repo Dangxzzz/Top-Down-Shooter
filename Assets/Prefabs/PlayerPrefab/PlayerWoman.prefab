@@ -115,7 +115,7 @@ MonoBehaviour:
   _playerDeath: {fileID: 3198202707988184962}
   _playerComponents:
   - {fileID: 2212964470745429175}
-  - {fileID: 2576346463885699452}
+  - {fileID: 0}
 --- !u!114 &2212964470745429175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: {fileID: 4696945103963218612}
+  _rb: {fileID: 2164862373739778613}
   _speed: 5
 --- !u!114 &4696945103963218612
 MonoBehaviour:
