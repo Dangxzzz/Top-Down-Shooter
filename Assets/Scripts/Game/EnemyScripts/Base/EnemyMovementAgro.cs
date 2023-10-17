@@ -1,3 +1,4 @@
+using Pathfinding;
 using TDS.Utillity;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ namespace TDS.Game.EnemyScripts.Base
         #region Variables
 
         [SerializeField] private VisionArea _visionArea;
-        [SerializeField] private EnemyMovement _enemyMovement;
+         [SerializeField] private EnemyMovement _enemyMovement;
         [SerializeField] private EnemyIdle _idle;
         [SerializeField] private LayerMask _obstacleMask;
 
@@ -21,7 +22,6 @@ namespace TDS.Game.EnemyScripts.Base
 
         private void OnEnable()
         {
-            // _visionArea = GetComponent<VisionArea>();
             _visionArea.OnStay += OnObserverStay;
             _visionArea.OnExit += OnObserverExit;
         }

@@ -79,7 +79,7 @@ namespace TDS.Game.EnemyScripts.Base
 
         private void RotateToTarget(Transform target)
         {
-            Vector3 direction = transform.position - target.position;
+            Vector3 direction =target.position- transform.position;
             transform.up = direction;
         }
 

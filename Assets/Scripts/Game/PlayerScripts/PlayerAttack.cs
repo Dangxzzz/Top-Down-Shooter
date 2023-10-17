@@ -33,7 +33,7 @@ namespace TDS.Game.PlayerScripts
 
         private void CreateBullet()
         {
-            Instantiate(_bulletPrefab,_bulletSpawnPositionTransform.position, transform.rotation);
+            Lean.Pool.LeanPool.Spawn(_bulletPrefab, _bulletSpawnPositionTransform.position, transform.rotation);
         }
 
         private void Fire()

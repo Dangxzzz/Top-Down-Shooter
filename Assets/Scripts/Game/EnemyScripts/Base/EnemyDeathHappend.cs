@@ -30,6 +30,7 @@ namespace TDS.Game.EnemyScripts.Base
 
         private void OnDead(EnemyDeath enemyDeath)
         {
+            
             foreach (EnemyComponents component in _enemyComponents)
             {
                 component.Deactivate();

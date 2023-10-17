@@ -1,3 +1,4 @@
+using Pathfinding;
 using TDS.Game.Animation;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -9,6 +10,7 @@ namespace TDS.Game.EnemyScripts.Base
         #region Public methods
         [SerializeField] private EnemyAnimation _anim;
 
+
         #endregion
 
         #region Properties
@@ -18,8 +20,9 @@ namespace TDS.Game.EnemyScripts.Base
         #endregion
 
         #region Public methods
-
+        
         public abstract void SetTarget(Transform target);
+
         #endregion
     }
 }

@@ -17,7 +17,7 @@ namespace TDS.Game.ItemsScripts
 
         protected virtual void OnPerformAction(Collider2D other)
         {
-            Destroy(gameObject);
+            Lean.Pool.LeanPool.Despawn(gameObject);
         }
 
         #endregion

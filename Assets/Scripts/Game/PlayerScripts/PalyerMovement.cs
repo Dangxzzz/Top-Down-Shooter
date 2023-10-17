@@ -52,13 +52,15 @@
 //     }
 // }
 
+using System;
 using TDS.Game.Animation;
+using TDS.Infrastracture.Services;
 using TDS.Infrastracture.Services.Input;
 using UnityEngine;
 
 namespace TDS.Game.PlayerScripts
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : PlayerComponents
     {
         #region Variables
 
@@ -75,13 +77,19 @@ namespace TDS.Game.PlayerScripts
 
         #region Unity lifecycle
 
+        private void OnCollisionStay2D(Collision2D other)
+        {
+            _rb.velocity = new Vector2(0, 0);
+            _rb.angularVelocity = 0;
+            _rb.inertia = 0; 
+        }
+
         private void Update()
         {
             if (_inputService == null)
             {
                 return;
             }
-
             Rotate();
             Move();
         }
@@ -89,6 +97,11 @@ namespace TDS.Game.PlayerScripts
         #endregion
 
         #region Public methods
+
+        private void Start()
+        {
+            _inputService = ServiceLocator.Instance.Get<IInputService>();
+        }
 
         public void Construct(IInputService inputService)
         {
@@ -107,7 +120,6 @@ namespace TDS.Game.PlayerScripts
         private void Move()
         {
             Vector2 velocity = _inputService.Axes * _speed;
-
             _rb.velocity = velocity;
             _animation.SetSpeed(velocity.magnitude);
         }

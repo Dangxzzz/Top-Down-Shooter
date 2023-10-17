@@ -1,4 +1,7 @@
+using TDS.Game.PlayerScripts;
 using TDS.Infrastracture.Locator;
+using TDS.Infrastracture.Services.GamePlay;
+using TDS.Infrastracture.Services.Input;
 using UnityEngine;
 
 namespace TDS.Infrastracture.Services.LevelMenegmentService
@@ -14,6 +17,7 @@ namespace TDS.Infrastracture.Services.LevelMenegmentService
         private LevelManagementServiceConfig _config;
         private int _currentSceneIndex;
         private bool _isConfigLoaded;
+        private PlayerMovement _playerMovement;
 
         #endregion
 

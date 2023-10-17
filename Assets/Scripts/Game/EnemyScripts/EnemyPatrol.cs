@@ -1,3 +1,4 @@
+using Pathfinding;
 using TDS.Game.EnemyScripts.Base;
 using UnityEngine;
 

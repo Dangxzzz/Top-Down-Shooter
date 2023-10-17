@@ -29,8 +29,7 @@ namespace TDS.Game.EnemyScripts
         protected override void OnPerformAttack()
         {
             base.OnPerformAttack();
-
-            Instantiate(_bulletPrefab, transform.position, transform.rotation);
+            Lean.Pool.LeanPool.Spawn(_bulletPrefab, transform.position, transform.rotation);
         }
 
         #endregion

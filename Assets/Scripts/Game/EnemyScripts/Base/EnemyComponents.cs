@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TDS.Game.EnemyScripts
+namespace TDS.Game.EnemyScripts.Base
 {
     public abstract class EnemyComponents : MonoBehaviour
     {

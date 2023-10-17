@@ -18,10 +18,10 @@ namespace TDS.Game
 
         #region Unity lifecycle
 
-        private void Start()
+        private void OnEnable()
         {
-            _rb.velocity = -transform.up * _speed;
-            this.StartTimer(_lifeTime, () => Destroy(gameObject));
+            _rb.velocity = transform.up * _speed;
+            this.StartTimer(_lifeTime, () => DestroyThis());
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -29,8 +29,13 @@ namespace TDS.Game
             if (other.TryGetComponent(out UnitHp unitHp))
             {
                 unitHp.Change(-_damage);
-                Destroy(gameObject);
+                DestroyThis();
             }
+        }
+
+        private void DestroyThis()
+        {
+            Lean.Pool.LeanPool.Despawn(this);
         }
 
         #endregion

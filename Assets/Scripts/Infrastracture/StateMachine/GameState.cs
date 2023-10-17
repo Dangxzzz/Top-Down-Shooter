@@ -48,7 +48,7 @@ namespace TDS.Infrastracture.StateMachine
 
         #region Private methods
 
-        public void InitAfterLoadScene()
+        private void InitAfterLoadScene()
         {
             Debug.LogError($"GameState InitAfterLoadScene '{Time.frameCount}'");
             ServiceLocator.Get<MissionGameService>().Initialize();

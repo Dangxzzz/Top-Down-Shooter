@@ -8,6 +8,8 @@ namespace TDS.Game.EnemyScripts
         #region Variables
 
         [SerializeField] private EnemyMovement _enemyMovement;
+        [SerializeField] private float _minDistance;
+        
 
         private Transform _startPoint;
 
@@ -23,7 +25,7 @@ namespace TDS.Game.EnemyScripts
 
         private void Update()
         {
-            if (Vector3.Distance(_startPoint.position, transform.position) <= 0.3f)
+            if (Vector3.Distance(_startPoint.position, transform.position) <= _minDistance)
             {
                 _enemyMovement.SetTarget(null);
             }

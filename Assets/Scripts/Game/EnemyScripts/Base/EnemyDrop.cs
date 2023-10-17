@@ -82,8 +82,7 @@ namespace TDS.Game.EnemyScripts.Base
 
                 if (selectedWeight >= randomWeight)
                 {
-                    Instantiate(spawnData.ItemPrefab, position, Quaternion.identity);
-
+                    Lean.Pool.LeanPool.Spawn(spawnData.ItemPrefab, position, Quaternion.identity);
                     return;
                 }
             }

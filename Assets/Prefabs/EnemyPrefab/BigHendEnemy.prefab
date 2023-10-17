@@ -129,14 +129,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4533932399625611368}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7504092451029024517}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &1104676765687591155
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -247,14 +247,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4799136558679113236}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7504092451029024517}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &8623149130950613566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,8 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96ce10bc4097b434bb1b4273a5024d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 8.25
-  _minRadius: 5
+  _radius: 9
+  _minRadius: 6
   _angle: 54
   _targetMask:
     serializedVersion: 2
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 9216144141417988130}
   - component: {fileID: 5215803383914743637}
   - component: {fileID: 4674537263909200136}
-  - component: {fileID: 5815633697361039683}
+  - component: {fileID: -7018854262387972530}
   - component: {fileID: 5618589693539968161}
   - component: {fileID: 8372941389803565241}
   - component: {fileID: 197055725345459850}
@@ -321,7 +321,7 @@ Transform:
   - {fileID: 7990971935800834356}
   - {fileID: 279478063290720474}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6709997423226842802
 MonoBehaviour:
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyComponents:
-  - {fileID: 5815633697361039683}
+  - {fileID: -7018854262387972530}
   - {fileID: 197055725345459850}
   - {fileID: 8372941389803565241}
   - {fileID: 4674537263909200136}
@@ -402,7 +402,7 @@ MonoBehaviour:
   _attackDelay: 1
   _anim: {fileID: 1066672730626919359}
   _bulletPrefab: {fileID: 8021439508524345144, guid: 6d2682e7d616cb94d9af4446510ab24f, type: 3}
---- !u!114 &5815633697361039683
+--- !u!114 &-7018854262387972530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -411,12 +411,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6350870412440357823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04a5b55be644df438098f66baf80017, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a78d9e964ce4c5b9e9585e41eee7468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 1066672730626919359}
-  _rb: {fileID: 1557348087261516371}
-  _speed: 3
+  _targetSetter: {fileID: 3685009830873872671}
+  _aiPath: {fileID: 3282053413980860171}
 --- !u!114 &5618589693539968161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _visionArea: {fileID: 8623149130950613566}
-  _enemyMovement: {fileID: 5815633697361039683}
+  _enemyMovement: {fileID: -7018854262387972530}
   _idle: {fileID: 5772613298165224270}
   _obstacleMask:
     serializedVersion: 2
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _triggerObserver: {fileID: 1503239651477508169}
   _attack: {fileID: 4674537263909200136}
-  _movement: {fileID: 5815633697361039683}
+  _movement: {fileID: -7018854262387972530}
 --- !u!114 &197055725345459850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,9 +478,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580278016439d7743999a7506dd63af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movement: {fileID: 5815633697361039683}
+  _movement: {fileID: -7018854262387972530}
   _path: {fileID: 0}
-  _minDistance: 0.1
+  _minDistance: 0.2
 --- !u!60 &6504705100435392525
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -525,20 +525,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.062790394, y: 1.1334295}
-      - {x: -0.9275103, y: 0.8505839}
-      - {x: -1.2470839, y: -0.92674905}
+    - - {x: 0.07988191, y: -0.04361677}
+      - {x: -0.76700383, y: 1.0289242}
+      - {x: -1.1946146, y: 0.82640606}
+      - {x: -0.9260714, y: -0.4987322}
       - {x: -0.8232627, y: -0.9428285}
-      - {x: -0.6345792, y: -0.63838494}
-      - {x: -0.6300745, y: 0.41568547}
-      - {x: -0.07651281, y: 0.0019014478}
-      - {x: 0.54482555, y: 0.40645298}
-      - {x: 0.7019439, y: -0.18780455}
-      - {x: 0.4507327, y: -0.59426093}
-      - {x: 0.6588931, y: -0.9103015}
+      - {x: -0.6345792, y: -0.9058954}
+      - {x: -0.55873847, y: -0.93970126}
+      - {x: -0.2726872, y: -1.0146387}
+      - {x: -0.025863528, y: -1.1451083}
+      - {x: 0.006416559, y: -1.1330085}
+      - {x: 0.05838406, y: -1.129282}
+      - {x: 0.58755696, y: -1.0708079}
+      - {x: 0.597891, y: -1.0694627}
       - {x: 0.89614487, y: -1.0306368}
       - {x: 1.2078401, y: -0.95814407}
-      - {x: 0.8568711, y: 0.8427353}
+      - {x: 1.1778837, y: 0.9497395}
   m_UseDelaunayMesh: 0
 --- !u!50 &1557348087261516371
 Rigidbody2D:
@@ -809,7 +811,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 3
 --- !u!114 &1503239651477508169
 MonoBehaviour:
   m_ObjectHideFlags: 0

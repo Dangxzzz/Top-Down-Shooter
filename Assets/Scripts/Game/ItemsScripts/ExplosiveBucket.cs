@@ -25,9 +25,9 @@ namespace TDS.Game.ItemsScripts
         {
             if (other.gameObject.CompareTag(Tags.PlayerBullet))
             {
-                Instantiate(_explosion,transform.position, transform.rotation);
+                Lean.Pool.LeanPool.Spawn(_explosion, transform.position, transform.rotation);
                 base.OnPerformAction(other);
-                Destroy(other.gameObject);
+                Lean.Pool.LeanPool.Despawn(other.gameObject);
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _explosiveRadius);
 
                 foreach (Collider2D col in colliders)
