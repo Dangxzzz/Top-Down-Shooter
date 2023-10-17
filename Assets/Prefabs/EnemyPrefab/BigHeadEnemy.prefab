@@ -630,9 +630,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _items:
-  - Name: MedChest:100
+  - Name: MedChest:50
     ItemPrefab: {fileID: 8492110177458772135, guid: 0176abcfd3f649c4a9debaa1f87f4d42, type: 3}
-    SpawnWeight: 100
+    SpawnWeight: 50
+  - Name: Patrons:50
+    ItemPrefab: {fileID: 1754496783748342560, guid: 25815c1f531be3041a9b621507d887c6, type: 3}
+    SpawnWeight: 50
   _dropChance: 50
   _enemyDeath: {fileID: 3359412995145271074}
 --- !u!114 &3291439280859278873

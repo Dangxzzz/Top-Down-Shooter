@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6975359552973698030}
   - component: {fileID: 852210484402884229}
+  - component: {fileID: 1171124840362463682}
   - component: {fileID: 3198202707988184962}
   - component: {fileID: 8089313458087679729}
   - component: {fileID: 2212964470745429175}
@@ -86,6 +87,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initialHp: 100
   _maxHp: 100
+--- !u!114 &1171124840362463682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732683507371459710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f8bf43e86dc4584ab03ad3de948889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialAmmo: 100
+  _maxAmmo: 250
 --- !u!114 &3198202707988184962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 2564343154181020730, guid: e9ad01278c59e59448c48fa85db81172, type: 3}
   _bulletSpawnPositionTransform: {fileID: 8095250291648998183}
+  _playerAmmo: {fileID: 1171124840362463682}
   _animation: {fileID: 4696945103963218612}
 --- !u!114 &2576346463885699452
 MonoBehaviour:

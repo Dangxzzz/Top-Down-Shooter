@@ -11,6 +11,8 @@ namespace TDS.Game.PlayerScripts
         [Header("Configs")]
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _bulletSpawnPositionTransform;
+        [SerializeField] private PlayerAmmo _playerAmmo;
+        
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
@@ -33,6 +35,11 @@ namespace TDS.Game.PlayerScripts
 
         private void CreateBullet()
         {
+            _playerAmmo.Change(-1);
+            if (_playerAmmo.Current <= 0)
+            {
+                return;
+            }
             Lean.Pool.LeanPool.Spawn(_bulletPrefab, _bulletSpawnPositionTransform.position, transform.rotation);
         }
 

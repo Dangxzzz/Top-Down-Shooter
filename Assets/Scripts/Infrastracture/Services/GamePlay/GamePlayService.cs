@@ -17,7 +17,7 @@ namespace TDS.Infrastracture.Services.GamePlay
         private readonly MissionGameService _missionGameService;
 
         private float _currentHp;
-        
+
         public event Action OnHpOver;
         #endregion
 
@@ -45,7 +45,7 @@ namespace TDS.Infrastracture.Services.GamePlay
         {
             _missionGameService.OnCompleted += OnMissionCompleted;
         }
-
+        
         public void SetCurrentHp(float hp)
         {
             _currentHp = hp;
