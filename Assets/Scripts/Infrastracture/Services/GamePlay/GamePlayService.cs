@@ -1,10 +1,12 @@
 ﻿using System;
+using SPL.Editor;
 using TDS.Infrastracture.Locator;
 using TDS.Infrastracture.Services.LevelMenegmentService;
 using TDS.Infrastracture.Services.Missions;
 using TDS.Infrastracture.StateMachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using Scene = TDS.Infrastracture.Services.SceneLoadingService.Scene;
 
 namespace TDS.Infrastracture.Services.GamePlay
 {
@@ -15,6 +17,7 @@ namespace TDS.Infrastracture.Services.GamePlay
         private readonly LevelManagementService _levelManagementService;
         private readonly StateMachine.StateMachine _stateMachine;
         private readonly MissionGameService _missionGameService;
+        private readonly SceneLoadingService.SceneLoadingService _sceneLoadingService;
 
         private float _currentHp;
 
@@ -24,11 +27,12 @@ namespace TDS.Infrastracture.Services.GamePlay
         #region Setup/Teardown
 
         public GameplayService(MissionGameService missionGameService, LevelManagementService levelManagementService,
-            StateMachine.StateMachine stateMachine)
+            StateMachine.StateMachine stateMachine,SceneLoadingService.SceneLoadingService sceneLoadingService)
         {
             _missionGameService = missionGameService;
             _levelManagementService = levelManagementService;
             _stateMachine = stateMachine;
+            _sceneLoadingService = sceneLoadingService;
         }
 
         #endregion
@@ -65,7 +69,7 @@ namespace TDS.Infrastracture.Services.GamePlay
             }
             else
             {
-                Debug.LogError($"OLOLOL! YOU WIN! ALL GAME FINISHED!");
+                _sceneLoadingService.LoadScene(Scene.Win);
             }
         }
 

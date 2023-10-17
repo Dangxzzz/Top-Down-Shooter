@@ -97,11 +97,7 @@ namespace TDS.Game.PlayerScripts
         #endregion
 
         #region Public methods
-
-        private void Start()
-        {
-            _inputService = ServiceLocator.Instance.Get<IInputService>();
-        }
+        
 
         public void Construct(IInputService inputService)
         {

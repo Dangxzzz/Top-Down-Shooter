@@ -15,3 +15,4 @@ MonoBehaviour:
   _sceneNames:
   - GameScene
   - GameScene2
+  - BossScene

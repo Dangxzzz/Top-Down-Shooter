@@ -2,35 +2,21 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
-namespace TDS
+namespace TDS.UI
 {
     public class BossFightLabelSpawner : MonoBehaviour
     {
         #region Variables
 
         [SerializeField] private TextMeshProUGUI _label;
-        private bool _isActive;
-
-        #endregion
-
-        #region Properties
-
-        public bool IsActive
-        {
-            get => _isActive;
-            set => _isActive = value;
-        }
 
         #endregion
 
         #region Unity lifecycle
 
-        private void Update()
+        private void Start()
         {
-            if (_isActive)
-            {
-                ShowLabel();
-            }
+            ShowLabel();
         }
 
         #endregion

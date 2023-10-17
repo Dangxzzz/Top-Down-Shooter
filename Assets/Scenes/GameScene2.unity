@@ -60749,6 +60749,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6975359552973698030, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
   m_PrefabInstance: {fileID: 564399782}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &564399784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 852210484402884229, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
+  m_PrefabInstance: {fileID: 564399782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c72e9c1b72cbf44bda6243ce7f5a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &564399785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1171124840362463682, guid: 918bf666239e525468778e9b7a1c84bb, type: 3}
+  m_PrefabInstance: {fileID: 564399782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f8bf43e86dc4584ab03ad3de948889e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &568535614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61043,6 +61065,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 404885208}
     m_Modifications:
+    - target: {fileID: 1895499074454050813, guid: 7a81e8023824e4e4797a54f87b107cd7, type: 3}
+      propertyPath: _playerAmmo
+      value: 
+      objectReference: {fileID: 564399785}
+    - target: {fileID: 2070952832104695617, guid: 7a81e8023824e4e4797a54f87b107cd7, type: 3}
+      propertyPath: _hp
+      value: 
+      objectReference: {fileID: 564399784}
     - target: {fileID: 5847233620225605180, guid: 7a81e8023824e4e4797a54f87b107cd7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -128200,7 +128230,7 @@ GameObject:
   - component: {fileID: 1187456093}
   - component: {fileID: 1187456092}
   - component: {fileID: 1187456091}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Destination
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128300,7 +128330,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.009016037, y: 0}

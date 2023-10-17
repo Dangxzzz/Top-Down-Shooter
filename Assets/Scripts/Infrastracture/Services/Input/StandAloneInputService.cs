@@ -40,12 +40,6 @@ namespace TDS.Infrastracture.Services.Input
 
         private Vector3 GetLookDirection()
         {
-            if (_camera==null || _playerMovementTransform==null)
-            {
-                _playerMovementTransform = Object.FindObjectOfType<PlayerMovement>().transform;
-                _camera = Camera.main;
-            }
-            _playerMovementTransform = Object.FindObjectOfType<PlayerMovement>().transform;
             Vector3 worldMousePosition = _camera.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
             worldMousePosition.z = 0;
             return worldMousePosition-_playerMovementTransform.position;

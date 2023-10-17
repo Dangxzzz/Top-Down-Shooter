@@ -30,7 +30,7 @@ namespace TDS.Infrastracture.StateMachine
             LevelManagementService levelManagementService = new(sceneLoadingService);
             ServiceLocator.Register(levelManagementService);
             ServiceLocator.RegisterMonoBeh<RunnerCourutine>();
-            ServiceLocator.Register(new GameplayService(missionGameService, levelManagementService, StateMachine));
+            ServiceLocator.Register(new GameplayService(missionGameService, levelManagementService, StateMachine, sceneLoadingService));
 #if UNITY_STANDALONE
             ServiceLocator.Register<IInputService>(new StandaloneInputService());
 #elif UNITY_ANDROID || UNITY_IOS

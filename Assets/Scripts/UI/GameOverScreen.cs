@@ -30,6 +30,7 @@ namespace TDS.UI
             _restartButton.onClick.AddListener(() =>
             {
                 ServiceLocator.Instance.Get<LevelManagementService>().LoadCurrentLevel();
+                ServiceLocator.Instance.Get<StateMachine>().Enter<GameState>();
             });
         }
 

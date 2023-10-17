@@ -49,10 +49,6 @@ namespace TDS.Infrastracture.Services.LevelMenegmentService
 
         public void LoadCurrentLevel()
         {
-            if (_config == null)
-            {
-                Debug.Log($"error {_config.name}");
-            }
             _sceneLoadingService.LoadScene(_config.SceneNames[_currentSceneIndex]);
         }
 
