@@ -1,9 +1,6 @@
-using TDS.Game.PlayerScripts;
+using System;
 using TDS.Infrastracture.Services;
 using TDS.Infrastracture.Services.GamePlay;
-using TDS.Infrastracture.Services.Input;
-using TDS.Infrastracture.Services.LevelMenegmentService;
-using TDS.Infrastracture.Services.SceneLoadingService;
 using TDS.Infrastracture.StateMachine;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,25 +15,29 @@ namespace TDS.UI
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _mainMenuButton;
 
-
+        private GameplayService _gameplayService;
         #endregion
 
         #region Unity lifecycle
 
-        public void Start()
+        private void Awake()
         {
-            ServiceLocator.Instance.Get<GameplayService>().OnHpOver += LoseScreen;
+            _gameplayService = ServiceLocator.Instance.Get<GameplayService>();
+        }
+
+        private void Start()
+        {
+            _gameplayService.OnHpOver += LoseScreen;
             _mainMenuButton.onClick.AddListener(OnMainMenuButtonClick);
             _restartButton.onClick.AddListener(() =>
             {
-                ServiceLocator.Instance.Get<LevelManagementService>().LoadCurrentLevel();
                 ServiceLocator.Instance.Get<StateMachine>().Enter<GameState>();
             });
         }
 
-        public void OnDisable()
+        private void OnDisable()
         {
-            ServiceLocator.Instance.Get<GameplayService>().OnHpOver -= LoseScreen;
+           _gameplayService.OnHpOver -= LoseScreen;
         }
 
         #endregion
@@ -50,8 +51,7 @@ namespace TDS.UI
 
         private void OnMainMenuButtonClick()
         {
-            ServiceLocator.Instance.Get<SceneLoadingService>().LoadScene(Scene.Menu);
-            ServiceLocator.Instance.Get<GameplayService>().Initialize();
+            ServiceLocator.Instance.Get<StateMachine>().Enter<MenuState>();
         }
 
         #endregion

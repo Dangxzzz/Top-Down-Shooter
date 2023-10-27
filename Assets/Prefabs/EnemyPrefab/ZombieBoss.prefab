@@ -185,7 +185,6 @@ GameObject:
   - component: {fileID: 5094515429039571780}
   - component: {fileID: 3602305087871760452}
   - component: {fileID: 8708356737880233646}
-  - component: {fileID: 2388748992655040276}
   - component: {fileID: 7482303229524070320}
   - component: {fileID: 740019363475063999}
   - component: {fileID: 4316035521698497514}
@@ -261,7 +260,6 @@ MonoBehaviour:
   - {fileID: 3602305087871760452}
   - {fileID: 4451295757381357906}
   - {fileID: 5094515429039571780}
-  - {fileID: 2388748992655040276}
   _enemyDeath: {fileID: 3330774330080398670}
 --- !u!114 &6640530606064721171
 MonoBehaviour:
@@ -340,22 +338,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyMovement: {fileID: 3602305087871760452}
   _minDistance: 0
---- !u!114 &2388748992655040276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3576309316579643657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c160758f0fd10c4dba62796dfffa7cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _visionArea: {fileID: 605092624844179262}
-  _obstacleMask:
-    serializedVersion: 2
-    m_Bits: 8192
 --- !u!50 &7482303229524070320
 Rigidbody2D:
   serializedVersion: 4
@@ -369,8 +351,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 100
+  m_AngularDrag: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -505,7 +487,7 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0.6
-  pickNextWaypointDist: 2
+  pickNextWaypointDist: 0.8
   endReachedDistance: 0.2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1

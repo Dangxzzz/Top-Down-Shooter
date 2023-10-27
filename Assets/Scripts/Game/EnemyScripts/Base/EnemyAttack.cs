@@ -1,4 +1,6 @@
+using System;
 using TDS.Game.Animation;
+using TDS.Game.PlayerScripts;
 using UnityEngine;
 
 namespace TDS.Game.EnemyScripts.Base
@@ -13,6 +15,7 @@ namespace TDS.Game.EnemyScripts.Base
 
         private bool _needAttack;
         private float _nextAttackTime;
+        private Transform _playerTransform;
 
         #endregion
 
@@ -24,18 +27,29 @@ namespace TDS.Game.EnemyScripts.Base
 
         #region Unity lifecycle
 
+        private void Start()
+        {
+            _playerTransform = FindObjectOfType<PlayerMovement>().transform;
+        }
+
         private void Update()
         {
             if (!_needAttack)
             {
                 return;
             }
-
+            RotateToPlayer();
             if (Time.time >= _nextAttackTime)
             {
                 _nextAttackTime = Time.time + _attackDelay;
                 OnPerformAttack();
             }
+        }
+
+        private void RotateToPlayer()
+        {
+            Vector3 direction = _playerTransform.position - transform.position;
+            transform.up = direction;
         }
 
         #endregion
