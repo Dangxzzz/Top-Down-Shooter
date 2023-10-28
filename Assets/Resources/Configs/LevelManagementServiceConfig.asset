@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: LevelManagementServiceConfig
   m_EditorClassIdentifier: 
   _sceneNames:
+  - BossScene
   - GameScene
   - GameScene2
-  - BossScene
