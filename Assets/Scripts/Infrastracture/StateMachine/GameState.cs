@@ -59,8 +59,11 @@ namespace TDS.Infrastracture.StateMachine
 
             IInputService inputService = ServiceLocator.Get<IInputService>();
             inputService.Initialize(Camera.main, playerMovementTransform);
-
+            PlayerAttack _playerAttack = _playerMovement.GetComponent<PlayerAttack>();
+            
+            
             _playerMovement.Construct(inputService);
+            _playerAttack.Construct(inputService);
         }
 
         #endregion

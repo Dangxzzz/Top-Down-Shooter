@@ -1,14 +1,17 @@
+using System;
 using TDS.Infrastracture.Locator;
-using Camera = UnityEngine.Camera;
-using Transform = UnityEngine.Transform;
-using Vector2 = UnityEngine.Vector2;
-using Vector3 = UnityEngine.Vector3;
 using UnityEngine;
 
 namespace TDS.Infrastracture.Services.Input
 {
     public interface IInputService : IService
     {
+        #region Events
+
+        event Action OnAttack;
+
+        #endregion
+
         #region Properties
 
         Vector2 Axes { get; }

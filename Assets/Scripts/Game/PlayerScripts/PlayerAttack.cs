@@ -1,6 +1,6 @@
 using TDS.Game.Animation;
+using TDS.Infrastracture.Services.Input;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace TDS.Game.PlayerScripts
 {
@@ -12,21 +12,37 @@ namespace TDS.Game.PlayerScripts
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private Transform _bulletSpawnPositionTransform;
         [SerializeField] private PlayerAmmo _playerAmmo;
-        
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
+
+        private IInputService _inputService;
 
         #endregion
 
         #region Unity lifecycle
 
-        private void Update()
+        private void OnEnable()
         {
-            if (Input.GetButtonDown("Fire1"))
-                {
-                    Fire();
-                }
+            if (_inputService != null)
+            {
+                _inputService.OnAttack += Fire;
+            }
+        }
+
+        private void OnDisable()
+        {
+            _inputService.OnAttack -= Fire;
+        }
+
+        #endregion
+
+        #region Public methods
+
+        public void Construct(IInputService inputService)
+        {
+            _inputService = inputService;
+            _inputService.OnAttack += Fire;
         }
 
         #endregion
@@ -40,6 +56,7 @@ namespace TDS.Game.PlayerScripts
             {
                 return;
             }
+
             Lean.Pool.LeanPool.Spawn(_bulletPrefab, _bulletSpawnPositionTransform.position, transform.rotation);
         }
 

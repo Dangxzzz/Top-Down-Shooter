@@ -1,14 +1,20 @@
-﻿using TDS.Game.PlayerScripts;
+﻿using System;
 using UnityEngine;
 
 namespace TDS.Infrastracture.Services.Input
 {
-    public class StandaloneInputService : IInputService
+    public class StandaloneInputService : MonoBehaviour, IInputService
     {
         #region Variables
 
         private Camera _camera;
         private Transform _playerMovementTransform;
+
+        #endregion
+
+        #region Events
+
+        public event Action OnAttack;
 
         #endregion
 
@@ -19,13 +25,24 @@ namespace TDS.Infrastracture.Services.Input
 
         #endregion
 
+        #region Unity lifecycle
+
+        private void Update()
+        {
+            if (UnityEngine.Input.GetButtonDown("Fire1"))
+            {
+                OnAttack?.Invoke();
+            }
+        }
+
+        #endregion
+
         #region IInputService
 
         public void Dispose()
         {
             _camera = null;
             _playerMovementTransform = null;
-            Debug.Log("Exit input");
         }
 
         public void Initialize(Camera camera, Transform playerMovementTransform)
@@ -42,7 +59,7 @@ namespace TDS.Infrastracture.Services.Input
         {
             Vector3 worldMousePosition = _camera.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
             worldMousePosition.z = 0;
-            return worldMousePosition-_playerMovementTransform.position;
+            return worldMousePosition - _playerMovementTransform.position;
         }
 
         #endregion
