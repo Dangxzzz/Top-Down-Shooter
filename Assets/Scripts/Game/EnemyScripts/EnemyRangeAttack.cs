@@ -16,7 +16,6 @@ namespace TDS.Game.EnemyScripts
 
         protected override void OnPerformAttack()
         {
-            Debug.Log("LongAttack");
             base.OnPerformAttack();
             Lean.Pool.LeanPool.Spawn(_bulletPrefab, transform.position, transform.rotation);
         }

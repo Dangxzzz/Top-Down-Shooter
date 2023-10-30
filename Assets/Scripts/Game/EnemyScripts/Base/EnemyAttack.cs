@@ -31,10 +31,7 @@ namespace TDS.Game.EnemyScripts.Base
         {
             _playerTransform = FindObjectOfType<PlayerMovement>().transform;
         }
-        public void PerformAttackForced()
-        {
-            OnPerformAttack();
-        }
+
         private void Update()
         {
             if (!_needAttack)

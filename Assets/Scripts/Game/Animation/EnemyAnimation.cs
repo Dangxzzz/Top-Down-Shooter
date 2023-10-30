@@ -11,7 +11,6 @@ namespace TDS.Game.Animation
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Dead = Animator.StringToHash("Death");
         private static readonly int Speed = Animator.StringToHash("Speed");
-        private static readonly int AttackIndex = Animator.StringToHash("AttackIndex");
 
         [SerializeField] private Animator _animator;
 
@@ -48,12 +47,7 @@ namespace TDS.Game.Animation
         [Preserve]
         private void MeleeAttackHit()
         {
-            Debug.Log("ShortAttack");
             OnMeleeAttackHit?.Invoke();
-        }
-        public void SetAttackIndex(int index)
-        {
-            _animator.SetFloat(AttackIndex, index);
         }
 
         #endregion
